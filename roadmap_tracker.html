@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f5f2ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1c1a17" media="(prefers-color-scheme: dark)">
+<title>Roadmap · 2026 → 2027</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f2ec;
+    --surface: #fdfbf6;
+    --surface-2: #efebe2;
+    --text-1: #1a1a1a;
+    --text-2: #6b6864;
+    --text-3: #a39f97;
+    --text-4: #c8c4ba;
+    --border: #d8d4ca;
+    --border-strong: #b8b3a6;
+    --accent: #e85d24;
+    --accent-soft: rgba(232, 93, 36, 0.1);
+    --accent-strong: #c84810;
+    --success: #2d8659;
+    --success-soft: rgba(45, 134, 89, 0.1);
+    --warning: #c97a14;
+    --warning-soft: rgba(201, 122, 20, 0.1);
+    --danger: #b83020;
+    --danger-soft: rgba(184, 48, 32, 0.1);
+    --grid: rgba(0,0,0,0.03);
+    --shadow: 0 0 0 1px rgba(0,0,0,0.04);
+  }
+
+  [data-theme="dark"] {
+    --bg: #1c1a17;
+    --surface: #252320;
+    --surface-2: #2e2c28;
+    --text-1: #f0ede5;
+    --text-2: #9c9a92;
+    --text-3: #67635c;
+    --text-4: #45413a;
+    --border: #38342e;
+    --border-strong: #524d44;
+    --accent: #ff7a3e;
+    --accent-soft: rgba(255, 122, 62, 0.13);
+    --accent-strong: #ff9258;
+    --success: #5ec083;
+    --success-soft: rgba(94, 192, 131, 0.13);
+    --warning: #d99441;
+    --warning-soft: rgba(217, 148, 65, 0.13);
+    --danger: #d85a4b;
+    --danger-soft: rgba(216, 90, 75, 0.13);
+    --grid: rgba(255,255,255,0.03);
+    --shadow: 0 0 0 1px rgba(0,0,0,0.4);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1c1a17;
+      --surface: #252320;
+      --surface-2: #2e2c28;
+      --text-1: #f0ede5;
+      --text-2: #9c9a92;
+      --text-3: #67635c;
+      --text-4: #45413a;
+      --border: #38342e;
+      --border-strong: #524d44;
+      --accent: #ff7a3e;
+      --accent-soft: rgba(255, 122, 62, 0.13);
+      --accent-strong: #ff9258;
+      --success: #5ec083;
+      --success-soft: rgba(94, 192, 131, 0.13);
+      --warning: #d99441;
+      --warning-soft: rgba(217, 148, 65, 0.13);
+      --danger: #d85a4b;
+      --danger-soft: rgba(216, 90, 75, 0.13);
+      --grid: rgba(255,255,255,0.03);
+      --shadow: 0 0 0 1px rgba(0,0,0,0.4);
+    }
+  }
+
+  html, body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--text-1);
+    background: var(--bg);
+    font-feature-settings: "kern", "tnum";
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body {
+    min-height: 100vh;
+    padding: 24px 16px 80px;
+  }
+
+  .mono {
+    font-family: ui-monospace, 'SF Mono', 'JetBrains Mono', 'Menlo', 'Consolas', monospace;
+    font-feature-settings: "tnum";
+    letter-spacing: -0.01em;
+  }
+
+  .uc {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    font-size: 11px;
+  }
+
+  #app {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+  }
+  .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .brand-mark {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--text-3);
+    text-transform: uppercase;
+  }
+  .brand-title {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--text-1);
+  }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-2);
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+  .theme-toggle:hover {
+    color: var(--text-1);
+    border-color: var(--border-strong);
+  }
+
+  /* Tab nav */
+  .tabs {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+    padding: 0 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 10px 0;
+    color: var(--text-3);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    margin-bottom: -1px;
+  }
+  .tab:hover { color: var(--text-2); }
+  .tab.active {
+    color: var(--text-1);
+    border-bottom-color: var(--accent);
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 32px;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+    padding: 0 4px;
+  }
+  .section-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .section-meta {
+    font-size: 11px;
+    color: var(--text-3);
+  }
+
+  /* Hero */
+  .hero {
+    padding: 36px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .hero-tag {
+    font-size: 10px;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 4px 8px;
+    border-radius: 2px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hero-number {
+    font-size: 88px;
+    font-weight: 200;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    color: var(--text-1);
+    margin-bottom: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .hero-label {
+    font-size: 14px;
+    color: var(--text-2);
+    font-weight: 400;
+  }
+  .hero-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 24px 0;
+  }
+  .hero-data {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .data-cell {
+    padding: 0;
+    border-right: 1px solid var(--border);
+    padding-right: 16px;
+  }
+  .data-cell:last-child { border-right: none; padding-right: 0; }
+  .data-cell:not(:first-child) { padding-left: 16px; }
+  .data-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 6px;
+  }
+  .data-value {
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--text-1);
+    font-variant-numeric: tabular-nums;
+  }
+  .data-value.success { color: var(--success); }
+  .data-value.warning { color: var(--warning); }
+
+  /* Card */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 14px;
+  }
+
+  /* Item list */
+  .item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: none;
+    transition: background-color 0.2s ease;
+  }
+  .item:first-of-type {
+    border-top: 1px solid var(--border);
+    border-radius: 4px 4px 0 0;
+  }
+  .item:last-of-type {
+    border-radius: 0 0 4px 4px;
+  }
+  .item.expanded {
+    background: var(--surface-2);
+  }
+  .item.passed { opacity: 0.65; }
+  .item-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .item-row:hover { background: var(--surface-2); }
+  .item.expanded .item-row { background: transparent; }
+
+  .item-num {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+    width: 28px;
+    flex-shrink: 0;
+  }
+
+  .item-status {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--text-4);
+  }
+  .item-status.in-progress {
+    background: var(--accent);
+  }
+  .item-status.passed {
+    background: var(--success);
+  }
+
+  .item-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .item-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-1);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .item-meta {
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 0.02em;
+  }
+
+  .item-progress-text {
+    font-size: 11px;
+    color: var(--text-2);
+    text-align: right;
+    flex-shrink: 0;
+    min-width: 70px;
+  }
+
+  .item-arrow {
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid var(--text-3);
+    border-bottom: 1.5px solid var(--text-3);
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  .item.expanded .item-arrow {
+    transform: rotate(-135deg);
+    margin-top: 4px;
+  }
+
+  /* Item detail */
+  .item-detail {
+    display: none;
+    padding: 0 22px 22px;
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+    padding-top: 18px;
+  }
+  .item.expanded .item-detail { display: block; }
+
+  .detail-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+  .detail-cell {
+    padding: 12px 14px;
+    border-right: 1px solid var(--border);
+  }
+  .detail-cell:nth-child(2n) { border-right: none; }
+  .detail-cell:nth-child(n+3) { border-top: 1px solid var(--border); }
+  .detail-cell-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 4px;
+  }
+  .detail-cell-value {
+    font-size: 13px;
+    color: var(--text-1);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Progress bar */
+  .bar-track {
+    height: 2px;
+    background: var(--border);
+    margin-top: 10px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .bar-fill.success { background: var(--success); }
+
+  /* Inputs */
+  .input, .select, .textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 10px 12px;
+    color: var(--text-1);
+    font-size: 13px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .select {
+    background-image: linear-gradient(45deg, transparent 50%, var(--text-3) 50%), linear-gradient(135deg, var(--text-3) 50%, transparent 50%);
+    background-position: calc(100% - 16px) center, calc(100% - 11px) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    padding-right: 32px;
+  }
+  .input:focus, .select:focus, .textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .textarea {
+    min-height: 60px;
+    resize: vertical;
+    line-height: 1.5;
+  }
+  .label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 16px;
+  }
+  .label:first-of-type { margin-top: 0; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 18px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:hover {
+    background: var(--accent-strong);
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    color: var(--text-1);
+  }
+  .btn-secondary:hover {
+    background: var(--surface-2);
+    border-color: var(--text-2);
+  }
+  .btn-success {
+    background: var(--success);
+  }
+  .btn-success:hover {
+    background: var(--success);
+    filter: brightness(0.9);
+  }
+  .btn-danger {
+    background: transparent;
+    border: 1px solid var(--danger);
+    color: var(--danger);
+  }
+  .btn-danger:hover {
+    background: var(--danger-soft);
+  }
+  .btn-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+
+  /* Quick log */
+  .chip-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin: 8px 0 0;
+  }
+  .chip {
+    padding: 8px 14px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: inherit;
+  }
+  .chip:hover {
+    border-color: var(--text-2);
+    color: var(--text-1);
+  }
+  .chip.selected {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  /* Cram */
+  .cram-result {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .cram-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 10px;
+  }
+  .cram-date {
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    margin: 4px 0 12px;
+    color: var(--text-1);
+  }
+  .cram-delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .cram-delta.faster {
+    background: var(--success-soft);
+    color: var(--success);
+  }
+  .cram-delta.slower {
+    background: var(--warning-soft);
+    color: var(--warning);
+  }
+  .cram-delta.same {
+    background: var(--surface);
+    color: var(--text-2);
+    border: 1px solid var(--border);
+  }
+  .cram-summary {
+    font-size: 11px;
+    color: var(--text-3);
+    margin-top: 16px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Slider */
+  .slider-row {
+    margin: 20px 0;
+  }
+  .slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .slider-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .slider-value {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-1);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 2px;
+    background: var(--border);
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 0 3px var(--bg);
+    transition: transform 0.15s ease;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 0 3px var(--bg);
+  }
+
+  /* Intensity */
+  .intensity {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+  }
+  .intensity-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .intensity-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .intensity-text {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .intensity-text.sustainable { color: var(--success); }
+  .intensity-text.intense { color: var(--warning); }
+  .intensity-text.burnout { color: var(--danger); }
+  .intensity-blocks {
+    display: flex;
+    gap: 3px;
+    height: 4px;
+  }
+  .intensity-block {
+    flex: 1;
+    background: var(--border);
+    transition: background 0.3s ease;
+  }
+  .intensity-block.on-sustainable { background: var(--success); }
+  .intensity-block.on-intense { background: var(--warning); }
+  .intensity-block.on-burnout { background: var(--danger); }
+  .intensity-note {
+    font-size: 11px;
+    color: var(--text-2);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* All certs cram preview */
+  .cram-list {
+    margin-top: 4px;
+  }
+  .cram-list-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cram-list-row:last-child { border-bottom: none; }
+  .cram-list-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-1);
+  }
+  .cram-list-sub {
+    font-size: 10px;
+    color: var(--text-3);
+    margin-top: 2px;
+    letter-spacing: 0.04em;
+  }
+  .cram-list-date {
+    font-size: 13px;
+    color: var(--text-1);
+    text-align: right;
+  }
+  .cram-list-delta {
+    font-size: 10px;
+    margin-top: 2px;
+    text-align: right;
+    letter-spacing: 0.04em;
+  }
+  .cram-list-delta.early { color: var(--success); }
+  .cram-list-delta.late { color: var(--warning); }
+  .cram-list-delta.same { color: var(--text-3); }
+
+  /* Stats — week grid */
+  .week-strip {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-top: 16px;
+  }
+  .day-cell {
+    aspect-ratio: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+  .day-label {
+    font-size: 9px;
+    color: var(--text-3);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .day-value {
+    font-size: 13px;
+    color: var(--text-2);
+    font-weight: 500;
+    margin-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+  .day-cell.has {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .day-cell.has .day-label { color: rgba(255,255,255,0.7); }
+  .day-cell.has .day-value { color: white; }
+  .day-cell.today {
+    border-color: var(--text-1);
+    border-width: 2px;
+  }
+
+  /* Empty */
+  .empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-3);
+    font-size: 13px;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--text-1);
+    color: var(--bg);
+    padding: 12px 20px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .toast.error { background: var(--danger); color: white; }
+
+  /* Sync indicator */
+  .sync {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: var(--text-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .sync-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--success);
+  }
+  .sync-dot.syncing {
+    background: var(--warning);
+    animation: pulse 1s infinite;
+  }
+  .sync-dot.error { background: var(--danger); }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: var(--text-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Today guidance */
+  .today-card {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+  }
+  .today-card-text {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-1);
+  }
+  .today-card-icon {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  /* Phase header */
+  .phase-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    margin-bottom: 8px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+
+  /* Password gate */
+  #gate {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  .gate-inner {
+    width: 100%;
+    max-width: 280px;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .gate-mark {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--text-3);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .gate-title {
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text-1);
+    margin-bottom: 32px;
+  }
+  .gate-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid var(--text-3);
+    padding: 14px 0;
+    font-size: 32px;
+    font-weight: 300;
+    text-align: center;
+    color: var(--text-1);
+    font-family: ui-monospace, monospace;
+    letter-spacing: 0.4em;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  .gate-input:focus { border-bottom-color: var(--accent); }
+  .gate-input.shake { animation: shake 0.4s; border-bottom-color: var(--danger); }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+  }
+  .gate-hint {
+    font-size: 10px;
+    color: var(--text-3);
+    margin-top: 16px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Reset zone */
+  .danger-zone {
+    margin-top: 32px;
+    padding: 18px;
+    border: 1px dashed var(--border-strong);
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 16px 12px 60px; }
+    .brand-title { font-size: 18px; }
+    .hero { padding: 28px 22px; }
+    .hero-number { font-size: 64px; }
+    .data-value { font-size: 18px; }
+    .item-row { padding: 16px 18px; gap: 12px; }
+    .tabs { gap: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Password gate -->
+<div id="gate">
+  <div class="gate-inner">
+    <div class="gate-mark">Roadmap · 2026</div>
+    <div class="gate-title">Passcode</div>
+    <input type="password" id="gate-input" class="gate-input mono" inputmode="numeric" maxlength="20" autocomplete="off">
+    <div class="gate-hint">Press enter</div>
+  </div>
+</div>
+
+<div id="app" style="display: none;">
+  <header class="header">
+    <div class="brand">
+      <div class="brand-mark">Roadmap · 2026 → 2027</div>
+      <div class="brand-title">AI Implementation</div>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" id="theme-icon">
+        <circle cx="7" cy="7" r="3" fill="currentColor"/>
+        <path d="M7 1V2M7 12V13M13 7H12M2 7H1M11.24 2.76L10.54 3.46M3.46 10.54L2.76 11.24M11.24 11.24L10.54 10.54M3.46 3.46L2.76 2.76" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="now">Now</button>
+    <button class="tab" data-tab="certs">Certs</button>
+    <button class="tab" data-tab="builds">Builds</button>
+    <button class="tab" data-tab="cram">Cram</button>
+    <button class="tab" data-tab="stats">Stats</button>
+  </nav>
+
+  <main id="content"></main>
+
+  <footer class="footer">
+    <div>v1.0 · Apr 2026</div>
+    <div class="sync">
+      <span class="sync-dot" id="sync-dot"></span>
+      <span id="sync-text">Synced</span>
+    </div>
+  </footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+//============================================================
+// CONFIG
+//============================================================
+
+const SUPABASE_URL = 'https://tigygpsrjcjpjdmwjoto.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpZ3lncHNyamNqcGpkbXdqb3RvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5OTIwMTAsImV4cCI6MjA5MjU2ODAxMH0.awSNzIt9kgHd_JUy6QD5HhlYX8pAuzbZf6WkY8p-G30';
+const PASSCODE = '1801';
+const ROW_ID = 'main';
+
+//============================================================
+// DEFAULT DATA
+//============================================================
+
+const DEFAULT_CERTS = [
+  { id: 'ai-prac', name: 'AWS AI Practitioner', short: 'AI Practitioner', targetDate: '2026-06-28', hoursTarget: 50, hoursLogged: 0, status: 'in-progress', cost: 15000, notes: '', completedDate: null, order: 1 },
+  { id: 'linuc-101', name: 'LinuC 101', short: 'LinuC 101', targetDate: '2026-06-30', hoursTarget: 80, hoursLogged: 0, status: 'in-progress', cost: 16500, notes: '', completedDate: null, order: 2 },
+  { id: 'linuc-102', name: 'LinuC 102', short: 'LinuC 102', targetDate: '2026-09-15', hoursTarget: 80, hoursLogged: 0, status: 'not-started', cost: 16500, notes: '', completedDate: null, order: 3 },
+  { id: 'aws-saa', name: 'AWS Solutions Architect Associate', short: 'AWS SAA', targetDate: '2026-12-15', hoursTarget: 120, hoursLogged: 0, status: 'not-started', cost: 11250, notes: '', completedDate: null, order: 4 },
+  { id: 'aws-mla', name: 'AWS ML Engineer Associate', short: 'AWS MLA-C01', targetDate: '2027-03-15', hoursTarget: 80, hoursLogged: 0, status: 'not-started', cost: 11250, notes: '', completedDate: null, order: 5 },
+  { id: 'g-ken', name: 'G検定 (JDLA)', short: 'G検定', targetDate: '2027-05-08', hoursTarget: 30, hoursLogged: 0, status: 'not-started', cost: 13200, notes: '', completedDate: null, order: 6 }
+];
+
+const DEFAULT_BUILDS = [
+  { id: 'b1', name: 'Article Summarizer', number: 1, hoursTarget: 10, hoursLogged: 0, status: 'not-started', githubUrl: '', notes: '', completedDate: null, plannedStart: '2026-07-15' },
+  { id: 'b2', name: 'RAG with pgvector', number: 2, hoursTarget: 20, hoursLogged: 0, status: 'not-started', githubUrl: '', notes: '', completedDate: null, plannedStart: '2026-09-25' },
+  { id: 'b3', name: 'Tool Calling', number: 3, hoursTarget: 20, hoursLogged: 0, status: 'not-started', githubUrl: '', notes: '', completedDate: null, plannedStart: '2026-11-01' },
+  { id: 'b4', name: 'Agent + MCP Server', number: 4, hoursTarget: 30, hoursLogged: 0, status: 'not-started', githubUrl: '', notes: '', completedDate: null, plannedStart: '2026-12-20' },
+  { id: 'b5', name: 'Bedrock + Lambda Deploy', number: 5, hoursTarget: 30, hoursLogged: 0, status: 'not-started', githubUrl: '', notes: '', completedDate: null, plannedStart: '2027-02-15' }
+];
+
+let state = {
+  version: 1,
+  certs: DEFAULT_CERTS.map(c => ({...c})),
+  builds: DEFAULT_BUILDS.map(b => ({...b})),
+  sessions: [],
+  startDate: '2026-04-24',
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
+let activeTab = 'now';
+let expandedItem = null;
+let saveTimer = null;
+
+//============================================================
+// SUPABASE
+//============================================================
+
+async function supabaseGet() {
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/roadmap_state?id=eq.${ROW_ID}&select=data`, {
+    headers: {
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+    }
+  });
+  if (!r.ok) throw new Error(`Load failed: ${r.status}`);
+  const rows = await r.json();
+  return rows[0]?.data || null;
+}
+
+async function supabaseSet(data) {
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/roadmap_state?id=eq.${ROW_ID}`, {
+    method: 'PATCH',
+    headers: {
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify({ data: data, updated_at: new Date().toISOString() })
+  });
+  if (!r.ok) throw new Error(`Save failed: ${r.status}`);
+}
+
+async function loadState() {
+  setSyncStatus('syncing', 'Loading');
+  try {
+    const loaded = await supabaseGet();
+    if (loaded && Object.keys(loaded).length > 0) {
+      state = { ...state, ...loaded };
+      DEFAULT_CERTS.forEach(dc => {
+        if (!state.certs.find(c => c.id === dc.id)) state.certs.push({...dc});
+      });
+      DEFAULT_BUILDS.forEach(db => {
+        if (!state.builds.find(b => b.id === db.id)) state.builds.push({...db});
+      });
+    }
+    setSyncStatus('ok', 'Synced');
+  } catch (e) {
+    console.error(e);
+    setSyncStatus('error', 'Offline');
+    showToast('Could not load — using defaults', true);
+  }
+}
+
+async function saveState() {
+  state.updatedAt = new Date().toISOString();
+  setSyncStatus('syncing', 'Saving');
+  try {
+    await supabaseSet(state);
+    setSyncStatus('ok', 'Synced');
+  } catch (e) {
+    console.error(e);
+    setSyncStatus('error', 'Save failed');
+    showToast('Save failed', true);
+  }
+}
+
+function debouncedSave() {
+  if (saveTimer) clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveState, 500);
+}
+
+function setSyncStatus(state, label) {
+  const dot = document.getElementById('sync-dot');
+  const text = document.getElementById('sync-text');
+  if (!dot || !text) return;
+  dot.className = 'sync-dot' + (state === 'syncing' ? ' syncing' : state === 'error' ? ' error' : '');
+  text.textContent = label;
+}
+
+async function resetState() {
+  if (!confirm('Reset all progress? This cannot be undone.')) return;
+  state = {
+    version: 1,
+    certs: DEFAULT_CERTS.map(c => ({...c})),
+    builds: DEFAULT_BUILDS.map(b => ({...b})),
+    sessions: [],
+    startDate: '2026-04-24',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  };
+  await saveState();
+  expandedItem = null;
+  render();
+  showToast('Reset complete');
+}
+
+//============================================================
+// HELPERS
+//============================================================
+
+function fmtDate(iso, opts = {}) {
+  const d = new Date(iso + (iso.length === 10 ? 'T00:00:00' : ''));
+  if (opts.iso) return d.toISOString().slice(0, 10).replace(/-/g, '.');
+  return d.toLocaleDateString('en-US', {
+    month: opts.short ? 'short' : 'long',
+    day: 'numeric',
+    year: opts.year !== false ? 'numeric' : undefined
+  });
+}
+
+function fmtDateShort(iso) {
+  const d = new Date(iso + (iso.length === 10 ? 'T00:00:00' : ''));
+  const day = String(d.getDate()).padStart(2, '0');
+  const mo = String(d.getMonth() + 1).padStart(2, '0');
+  const yr = String(d.getFullYear()).slice(-2);
+  return `${day}.${mo}.${yr}`;
+}
+
+function todayISO() {
+  const d = new Date();
+  const yr = d.getFullYear();
+  const mo = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${yr}-${mo}-${day}`;
+}
+
+function daysBetween(d1, d2) {
+  const a = new Date(d1 + (d1.length === 10 ? 'T00:00:00' : ''));
+  const b = new Date(d2 + (d2.length === 10 ? 'T00:00:00' : ''));
+  return Math.round((b - a) / (1000 * 60 * 60 * 24));
+}
+
+function addDays(iso, days) {
+  const d = new Date(iso + 'T00:00:00');
+  d.setDate(d.getDate() + Math.ceil(days));
+  return d.toISOString().slice(0, 10);
+}
+
+function getNextCert() {
+  return state.certs
+    .filter(c => c.status !== 'passed')
+    .sort((a, b) => new Date(a.targetDate) - new Date(b.targetDate))[0];
+}
+
+function getCurrentPhase() {
+  const today = todayISO();
+  if (today < '2026-07-01') return { num: '01', desc: 'AI Practitioner + LinuC 101' };
+  if (today < '2026-10-01') return { num: '02', desc: 'LinuC 102 + Build 01' };
+  if (today < '2027-01-01') return { num: '03', desc: 'AWS SAA + Builds 02–03' };
+  if (today < '2027-04-01') return { num: '04', desc: 'MLA-C01 + Builds 04–05' };
+  return { num: '05', desc: 'Polish + G検定 + Job hunt' };
+}
+
+function getStreak() {
+  if (state.sessions.length === 0) return 0;
+  const dates = [...new Set(state.sessions.map(s => s.date))].sort().reverse();
+  const today = todayISO();
+  const yest = addDays(today, -1);
+  if (dates[0] !== today && dates[0] !== yest) return 0;
+  let streak = 1;
+  let prev = dates[0];
+  for (let i = 1; i < dates.length; i++) {
+    if (daysBetween(dates[i], prev) === 1) {
+      streak++;
+      prev = dates[i];
+    } else break;
+  }
+  return streak;
+}
+
+function getThisWeekHours() {
+  const today = new Date();
+  const dow = today.getDay();
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1));
+  monday.setHours(0, 0, 0, 0);
+  return state.sessions
+    .filter(s => new Date(s.date + 'T00:00:00') >= monday)
+    .reduce((sum, s) => sum + s.hours, 0);
+}
+
+function getTotalHours() {
+  return state.sessions.reduce((sum, s) => sum + s.hours, 0);
+}
+
+function getMonthHours() {
+  const now = new Date();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  return state.sessions
+    .filter(s => new Date(s.date + 'T00:00:00') >= monthStart)
+    .reduce((sum, s) => sum + s.hours, 0);
+}
+
+function showToast(msg, error = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (error ? ' error' : '');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+//============================================================
+// ACTIONS
+//============================================================
+
+async function logSession(targetId, hours, notes = '') {
+  if (!hours || hours <= 0) return;
+  state.sessions.push({
+    date: todayISO(),
+    hours: parseFloat(hours),
+    targetId,
+    notes,
+    timestamp: new Date().toISOString()
+  });
+  const cert = state.certs.find(c => c.id === targetId);
+  const build = state.builds.find(b => b.id === targetId);
+  if (cert) {
+    cert.hoursLogged = parseFloat((cert.hoursLogged + parseFloat(hours)).toFixed(2));
+    if (cert.status === 'not-started') cert.status = 'in-progress';
+  }
+  if (build) {
+    build.hoursLogged = parseFloat((build.hoursLogged + parseFloat(hours)).toFixed(2));
+    if (build.status === 'not-started') build.status = 'in-progress';
+  }
+  await saveState();
+  showToast(`+${hours}h logged`);
+  render();
+}
+
+async function markPassed(certId) {
+  const cert = state.certs.find(c => c.id === certId);
+  if (!cert) return;
+  cert.status = 'passed';
+  cert.completedDate = todayISO();
+  await saveState();
+  showToast(`${cert.short} passed`);
+  render();
+}
+
+async function unmarkPassed(certId) {
+  const cert = state.certs.find(c => c.id === certId);
+  if (!cert) return;
+  cert.status = cert.hoursLogged > 0 ? 'in-progress' : 'not-started';
+  cert.completedDate = null;
+  await saveState();
+  render();
+}
+
+async function markBuildShipped(buildId) {
+  const build = state.builds.find(b => b.id === buildId);
+  if (!build) return;
+  build.status = 'passed';
+  build.completedDate = todayISO();
+  await saveState();
+  showToast(`Build ${String(build.number).padStart(2,'0')} shipped`);
+  render();
+}
+
+async function unmarkBuild(buildId) {
+  const build = state.builds.find(b => b.id === buildId);
+  if (!build) return;
+  build.status = build.hoursLogged > 0 ? 'in-progress' : 'not-started';
+  build.completedDate = null;
+  await saveState();
+  render();
+}
+
+function updateNotes(itemId, notes) {
+  const cert = state.certs.find(c => c.id === itemId);
+  const build = state.builds.find(b => b.id === itemId);
+  if (cert) cert.notes = notes;
+  if (build) build.notes = notes;
+  debouncedSave();
+}
+
+function updateBuildGithub(buildId, url) {
+  const build = state.builds.find(b => b.id === buildId);
+  if (!build) return;
+  build.githubUrl = url;
+  debouncedSave();
+}
+
+async function updateTargetDate(certId, date) {
+  const cert = state.certs.find(c => c.id === certId);
+  if (cert && date) {
+    cert.targetDate = date;
+    await saveState();
+    render();
+  }
+}
+
+//============================================================
+// RENDER: NOW
+//============================================================
+
+function renderNow() {
+  const next = getNextCert();
+  const phase = getCurrentPhase();
+  const streak = getStreak();
+  const weekHrs = getThisWeekHours();
+  const todayLogged = state.sessions.filter(s => s.date === todayISO()).reduce((sum, s) => sum + s.hours, 0);
+
+  let heroHtml = '';
+  if (next) {
+    const days = daysBetween(todayISO(), next.targetDate);
+    let dayLabel = days >= 0 ? `Days until ${next.short.toUpperCase()}` : `Days past ${next.short.toUpperCase()}`;
+    let valClass = days < 0 ? 'warning' : '';
+    heroHtml = `
+      <div class="hero">
+        <div class="hero-top">
+          <div class="hero-eyebrow">Phase ${phase.num} · ${phase.desc}</div>
+          <div class="hero-tag">Active</div>
+        </div>
+        <div class="hero-number ${valClass}">${days < 0 ? '+' + Math.abs(days) : days}</div>
+        <div class="hero-label">${dayLabel} · target ${fmtDateShort(next.targetDate)}</div>
+        <div class="hero-divider"></div>
+        <div class="hero-data">
+          <div class="data-cell">
+            <div class="data-label">Today</div>
+            <div class="data-value mono">${todayLogged.toFixed(1)}<span style="font-size:11px;color:var(--text-3);margin-left:3px;">h</span></div>
+          </div>
+          <div class="data-cell">
+            <div class="data-label">Week</div>
+            <div class="data-value mono">${weekHrs.toFixed(1)}<span style="font-size:11px;color:var(--text-3);margin-left:3px;">h</span></div>
+          </div>
+          <div class="data-cell">
+            <div class="data-label">Streak</div>
+            <div class="data-value mono">${streak}<span style="font-size:11px;color:var(--text-3);margin-left:3px;">d</span></div>
+          </div>
+        </div>
+      </div>
+    `;
+  } else {
+    heroHtml = `
+      <div class="hero" style="text-align:center;">
+        <div class="hero-eyebrow" style="margin-bottom:24px;">All certs passed</div>
+        <div class="hero-number">✓</div>
+        <div class="hero-label">You did it</div>
+      </div>
+    `;
+  }
+
+  const targets = [
+    ...state.certs.filter(c => c.status !== 'passed').map(c => ({ id: c.id, label: c.short, type: 'cert' })),
+    ...state.builds.filter(b => b.status !== 'passed').map(b => ({ id: b.id, label: `Build ${String(b.number).padStart(2,'0')} · ${b.name}`, type: 'build' }))
+  ];
+
+  const quickLogHtml = targets.length > 0 ? `
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Quick Log</div>
+        <div class="section-meta">${todayLogged.toFixed(1)}h today</div>
+      </div>
+      <div class="card">
+        <label class="label">Subject</label>
+        <select class="select" id="ql-target">
+          ${targets.map(t => `<option value="${t.id}">${t.label}</option>`).join('')}
+        </select>
+        <label class="label">Duration</label>
+        <div class="chip-row">
+          <button class="chip" data-hours="0.25">15m</button>
+          <button class="chip" data-hours="0.5">30m</button>
+          <button class="chip" data-hours="1">1h</button>
+          <button class="chip" data-hours="1.5">1.5h</button>
+          <button class="chip" data-hours="2">2h</button>
+          <button class="chip" data-hours="3">3h</button>
+        </div>
+        <input type="number" class="input mono" id="ql-custom" placeholder="Custom (e.g. 0.75)" step="0.25" min="0" max="12" style="margin-top:10px;">
+        <button class="btn" id="ql-submit" style="width:100%;margin-top:14px;">Log session</button>
+      </div>
+    </div>
+  ` : '';
+
+  const todayFocus = `
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Today</div>
+        <div class="section-meta">${new Date().toLocaleDateString('en-US', {weekday:'long', month:'short', day:'numeric'})}</div>
+      </div>
+      <div class="today-card">
+        <div class="today-card-icon">Focus</div>
+        <div class="today-card-text">${getTodayGuidance(phase, next, weekHrs, todayLogged)}</div>
+      </div>
+    </div>
+  `;
+
+  return heroHtml + quickLogHtml + todayFocus;
+}
+
+function getTodayGuidance(phase, next, weekHrs, todayLogged) {
+  if (!next) return 'All certs passed. Time to interview.';
+  const dow = new Date().getDay();
+  if (dow === 0) {
+    return 'Sunday is a deload day. Do your weekly review in actualOS, then rest. No study today.';
+  }
+  if (todayLogged > 0) {
+    return `${todayLogged.toFixed(1)}h logged. ${todayLogged >= 1 ? 'Solid. Done for today if you want.' : 'Keep going if you have time.'}`;
+  }
+  if (dow === 6) {
+    return `Saturday: 2 hours of focused ${next.short} study, ideally morning. Then your weekend is yours.`;
+  }
+  return `Weekday: 1 hour during work-idle window. Open Ping-t or Skill Builder, study ${next.short}.`;
+}
+
+//============================================================
+// RENDER: CERTS
+//============================================================
+
+function renderCerts() {
+  const sorted = [...state.certs].sort((a, b) => a.order - b.order);
+  const passed = sorted.filter(c => c.status === 'passed').length;
+  let html = `
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Certifications</div>
+        <div class="section-meta mono">${String(passed).padStart(3,'0')} / 006 passed</div>
+      </div>
+      <div class="phase-line">
+        <span>Cert ID</span>
+        <span>Hours / Target</span>
+      </div>
+  `;
+  sorted.forEach(c => { html += renderItem(c, 'cert'); });
+  html += '</div>';
+  return html;
+}
+
+//============================================================
+// RENDER: BUILDS
+//============================================================
+
+function renderBuilds() {
+  const sorted = [...state.builds].sort((a, b) => a.number - b.number);
+  const shipped = sorted.filter(b => b.status === 'passed').length;
+  let html = `
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Shipped Builds</div>
+        <div class="section-meta mono">${String(shipped).padStart(3,'0')} / 005 shipped</div>
+      </div>
+      <div class="phase-line">
+        <span>Build ID</span>
+        <span>Hours / Target</span>
+      </div>
+  `;
+  sorted.forEach(b => { html += renderItem(b, 'build'); });
+  html += '</div>';
+  return html;
+}
+
+function renderItem(item, type) {
+  const isExpanded = expandedItem === item.id;
+  const pct = Math.min(100, (item.hoursLogged / item.hoursTarget) * 100);
+  const remaining = Math.max(0, item.hoursTarget - item.hoursLogged);
+
+  const statusClass = item.status === 'passed' ? 'passed' :
+                      item.hoursLogged > 0 ? 'in-progress' : '';
+
+  const num = type === 'cert' ? String(item.order).padStart(2,'0') : `B${String(item.number).padStart(2,'0')}`;
+
+  let metaText = '';
+  if (type === 'cert') {
+    metaText = `${item.hoursLogged.toFixed(1)} / ${item.hoursTarget}h · target ${fmtDateShort(item.targetDate)}`;
+  } else {
+    metaText = `${item.hoursLogged.toFixed(1)} / ${item.hoursTarget}h · planned ${fmtDateShort(item.plannedStart)}`;
+  }
+
+  let detailHtml = '';
+  if (isExpanded) {
+    const detailRows = type === 'cert' ? `
+      <div class="detail-cell">
+        <div class="detail-cell-label">Hours Logged</div>
+        <div class="detail-cell-value mono">${item.hoursLogged.toFixed(1)}</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-cell-label">Hours Remaining</div>
+        <div class="detail-cell-value mono">${remaining.toFixed(1)}</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-cell-label">Target Date</div>
+        <div class="detail-cell-value">
+          <input type="date" class="input mono" style="padding:4px 6px;font-size:12px;background:transparent;border:none;color:var(--text-1);" value="${item.targetDate}" data-update-date="${item.id}">
+        </div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-cell-label">Cost</div>
+        <div class="detail-cell-value mono">¥${item.cost.toLocaleString()}</div>
+      </div>
+    ` : `
+      <div class="detail-cell">
+        <div class="detail-cell-label">Hours Logged</div>
+        <div class="detail-cell-value mono">${item.hoursLogged.toFixed(1)}</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-cell-label">Hours Remaining</div>
+        <div class="detail-cell-value mono">${remaining.toFixed(1)}</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-cell-label">Status</div>
+        <div class="detail-cell-value">${item.status === 'passed' ? 'Shipped' : item.hoursLogged > 0 ? 'In progress' : 'Not started'}</div>
+      </div>
+      <div class="detail-cell">
+        <div class="detail-cell-label">Planned Start</div>
+        <div class="detail-cell-value mono">${fmtDateShort(item.plannedStart)}</div>
+      </div>
+    `;
+
+    const completedNote = item.completedDate ? `
+      <div style="font-size:11px;color:var(--success);margin-bottom:14px;letter-spacing:0.04em;text-transform:uppercase;">
+        ✓ Completed ${fmtDateShort(item.completedDate)}
+      </div>
+    ` : '';
+
+    const githubField = type === 'build' ? `
+      <label class="label">GitHub URL</label>
+      <input type="url" class="input mono" placeholder="https://github.com/..." value="${item.githubUrl || ''}" data-update-github="${item.id}" style="font-size:12px;">
+    ` : '';
+
+    const actionBtn = item.status === 'passed' ? `
+      <button class="btn btn-secondary" data-action="${type === 'cert' ? 'unpass' : 'unship'}" data-id="${item.id}">Mark not yet</button>
+    ` : `
+      <button class="btn btn-success" data-action="${type === 'cert' ? 'pass' : 'ship'}" data-id="${item.id}">${type === 'cert' ? 'Mark passed' : 'Mark shipped'}</button>
+    `;
+
+    detailHtml = `
+      <div class="item-detail">
+        ${completedNote}
+        <div class="detail-row">${detailRows}</div>
+        ${githubField}
+        <label class="label">Notes</label>
+        <textarea class="textarea" placeholder="Anything to remember..." data-update-notes="${item.id}">${item.notes || ''}</textarea>
+        <div class="btn-row">${actionBtn}</div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="item ${isExpanded ? 'expanded' : ''} ${item.status === 'passed' ? 'passed' : ''}">
+      <div class="item-row" data-toggle="${item.id}">
+        <span class="item-num mono">${num}</span>
+        <span class="item-status ${statusClass}"></span>
+        <div class="item-body">
+          <div class="item-title">${type === 'cert' ? item.name : item.name}</div>
+          <div class="item-meta mono">${metaText}</div>
+          <div class="bar-track">
+            <div class="bar-fill ${item.status === 'passed' ? 'success' : ''}" style="width:${pct}%"></div>
+          </div>
+        </div>
+        <div class="item-progress-text mono">${pct.toFixed(0)}%</div>
+        <span class="item-arrow"></span>
+      </div>
+      ${detailHtml}
+    </div>
+  `;
+}
+
+//============================================================
+// RENDER: CRAM
+//============================================================
+
+let cramState = { certId: null, hoursPerDay: 1, daysPerWeek: 5 };
+
+function renderCram() {
+  if (!cramState.certId) {
+    const first = state.certs.find(c => c.status !== 'passed');
+    if (first) cramState.certId = first.id;
+  }
+
+  const certOptions = state.certs.filter(c => c.status !== 'passed').map(c =>
+    `<option value="${c.id}" ${c.id === cramState.certId ? 'selected' : ''}>${c.short}</option>`
+  ).join('');
+
+  const cert = state.certs.find(c => c.id === cramState.certId);
+  let resultHtml = '';
+
+  if (cert) {
+    const remaining = Math.max(0, cert.hoursTarget - cert.hoursLogged);
+    const hpw = cramState.hoursPerDay * cramState.daysPerWeek;
+    const weeksNeeded = remaining / hpw;
+    const daysNeeded = Math.ceil(weeksNeeded * 7);
+    const cramDate = addDays(todayISO(), daysNeeded);
+    const delta = daysBetween(cramDate, cert.targetDate);
+    const intensity = getIntensity(cramState.hoursPerDay, cramState.daysPerWeek);
+
+    let deltaHtml = '';
+    if (remaining === 0) {
+      deltaHtml = `<div class="cram-delta same">Already done</div>`;
+    } else if (delta > 0) {
+      deltaHtml = `<div class="cram-delta faster">${delta} days early</div>`;
+    } else if (delta < 0) {
+      deltaHtml = `<div class="cram-delta slower">${Math.abs(delta)} days late</div>`;
+    } else {
+      deltaHtml = `<div class="cram-delta same">On schedule</div>`;
+    }
+
+    const dateStr = remaining === 0 ? 'TODAY' : fmtDateShort(cramDate);
+    const summary = remaining === 0 ? 'mark it passed' :
+      `${remaining.toFixed(1)}h remaining · ${hpw.toFixed(1)}h/wk · ${Math.ceil(weeksNeeded)}wk`;
+
+    const blockClass = `on-${intensity.level}`;
+    const blocks = intensity.level === 'sustainable' ? [blockClass, '', ''] :
+                   intensity.level === 'intense' ? [blockClass, blockClass, ''] :
+                   [blockClass, blockClass, blockClass];
+
+    resultHtml = `
+      <div class="cram-result">
+        <div class="cram-eyebrow">${cert.short}</div>
+        <div class="cram-date mono">${dateStr}</div>
+        ${deltaHtml}
+        <div class="cram-summary mono">${summary}</div>
+        <div class="intensity">
+          <div class="intensity-row">
+            <span class="intensity-label">Intensity</span>
+            <span class="intensity-text ${intensity.level}">${intensity.label}</span>
+          </div>
+          <div class="intensity-blocks">
+            <div class="intensity-block ${blocks[0]}"></div>
+            <div class="intensity-block ${blocks[1]}"></div>
+            <div class="intensity-block ${blocks[2]}"></div>
+          </div>
+          <div class="intensity-note">${intensity.note}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  const card1 = `
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Cram Mode</div>
+        <div class="section-meta">If you fully locked in</div>
+      </div>
+      <div class="card">
+        <label class="label">Cert</label>
+        <select class="select" id="cram-cert">${certOptions}</select>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Hours / day</span>
+            <span class="slider-value mono" id="cram-hpd-val">${cramState.hoursPerDay.toFixed(1)}h</span>
+          </div>
+          <input type="range" id="cram-hpd" min="0.5" max="6" step="0.5" value="${cramState.hoursPerDay}">
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Days / week</span>
+            <span class="slider-value mono" id="cram-dpw-val">${cramState.daysPerWeek}</span>
+          </div>
+          <input type="range" id="cram-dpw" min="1" max="7" step="1" value="${cramState.daysPerWeek}">
+        </div>
+
+        ${resultHtml}
+      </div>
+    </div>
+  `;
+
+  const card2 = `
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">All Certs Sequential</div>
+        <div class="section-meta">at current pace</div>
+      </div>
+      <div class="card">
+        ${renderCramAllCerts()}
+      </div>
+    </div>
+  `;
+
+  return card1 + card2;
+}
+
+function renderCramAllCerts() {
+  const hpw = cramState.hoursPerDay * cramState.daysPerWeek;
+  let cumulative = todayISO();
+  let html = '<div class="cram-list">';
+  const ordered = [...state.certs].filter(c => c.status !== 'passed').sort((a, b) => a.order - b.order);
+  if (ordered.length === 0) return '<div class="empty">All certs passed.</div>';
+
+  ordered.forEach(c => {
+    const remaining = Math.max(0, c.hoursTarget - c.hoursLogged);
+    const days = remaining > 0 ? Math.ceil((remaining / hpw) * 7) : 0;
+    cumulative = addDays(cumulative, days);
+    const delta = daysBetween(cumulative, c.targetDate);
+    let deltaText = '', deltaClass = '';
+    if (remaining === 0) { deltaText = 'done'; deltaClass = 'same'; }
+    else if (delta > 0) { deltaText = `${delta}d early`; deltaClass = 'early'; }
+    else if (delta < 0) { deltaText = `${Math.abs(delta)}d late`; deltaClass = 'late'; }
+    else { deltaText = 'on time'; deltaClass = 'same'; }
+
+    html += `
+      <div class="cram-list-row">
+        <div>
+          <div class="cram-list-name">${c.short}</div>
+          <div class="cram-list-sub mono">${remaining > 0 ? `${remaining.toFixed(0)}H remaining` : 'COMPLETE'}</div>
+        </div>
+        <div>
+          <div class="cram-list-date mono">${fmtDateShort(cumulative)}</div>
+          <div class="cram-list-delta ${deltaClass} mono">${deltaText}</div>
+        </div>
+      </div>
+    `;
+  });
+  html += '</div>';
+  return html;
+}
+
+function getIntensity(hpd, dpw) {
+  const hpw = hpd * dpw;
+  if (hpw <= 10 && dpw <= 6) {
+    return { level: 'sustainable', label: 'Sustainable', note: 'You can hold this pace for months without burning out. The plan default lives here.' };
+  }
+  if (hpw <= 18 && !(hpd > 4 && dpw >= 6)) {
+    return { level: 'intense', label: 'Intense', note: 'Doable for ~6 weeks if you are feeling it. Schedule a deload week immediately after the exam.' };
+  }
+  return { level: 'burnout', label: 'Burnout risk', note: 'This pace will break you. Either accept a later date, or do this for max 2 weeks before backing off. Honor sleep and gym.' };
+}
+
+//============================================================
+// RENDER: STATS
+//============================================================
+
+function renderStats() {
+  const total = getTotalHours();
+  const week = getThisWeekHours();
+  const month = getMonthHours();
+  const streak = getStreak();
+  const sessions = state.sessions.length;
+
+  const today = new Date();
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    const iso = d.toISOString().slice(0, 10);
+    const dayHours = state.sessions.filter(s => s.date === iso).reduce((sum, s) => sum + s.hours, 0);
+    days.push({
+      iso,
+      label: d.toLocaleDateString('en-US', { weekday: 'narrow' }),
+      hours: dayHours,
+      isToday: iso === todayISO()
+    });
+  }
+
+  const certHoursTotal = state.certs.reduce((sum, c) => sum + c.hoursTarget, 0);
+  const certHoursLogged = state.certs.reduce((sum, c) => sum + c.hoursLogged, 0);
+  const buildHoursTotal = state.builds.reduce((sum, b) => sum + b.hoursTarget, 0);
+  const buildHoursLogged = state.builds.reduce((sum, b) => sum + b.hoursLogged, 0);
+  const certsPassed = state.certs.filter(c => c.status === 'passed').length;
+  const buildsShipped = state.builds.filter(b => b.status === 'passed').length;
+  const totalCost = state.certs.filter(c => c.status === 'passed').reduce((sum, c) => sum + c.cost, 0);
+
+  return `
+    <div class="hero" style="text-align:center;">
+      <div class="hero-eyebrow">Lifetime hours logged</div>
+      <div class="hero-number mono" style="margin-top:8px;">${total.toFixed(1)}</div>
+      <div class="hero-label">across ${sessions} sessions</div>
+      <div class="hero-divider"></div>
+      <div class="hero-data">
+        <div class="data-cell">
+          <div class="data-label">Certs Passed</div>
+          <div class="data-value mono">${certsPassed}<span style="font-size:11px;color:var(--text-3);">/6</span></div>
+        </div>
+        <div class="data-cell">
+          <div class="data-label">Builds</div>
+          <div class="data-value mono">${buildsShipped}<span style="font-size:11px;color:var(--text-3);">/5</span></div>
+        </div>
+        <div class="data-cell">
+          <div class="data-label">Streak</div>
+          <div class="data-value mono">${streak}<span style="font-size:11px;color:var(--text-3);">d</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Last 7 Days</div>
+        <div class="section-meta mono">${week.toFixed(1)}h · ${month.toFixed(1)}h month</div>
+      </div>
+      <div class="card">
+        <div class="week-strip">
+          ${days.map(d => `
+            <div class="day-cell ${d.hours > 0 ? 'has' : ''} ${d.isToday ? 'today' : ''}">
+              <div class="day-label">${d.label}</div>
+              <div class="day-value mono">${d.hours > 0 ? d.hours.toFixed(1) : '—'}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Progress Totals</div>
+        <div class="section-meta">all-time</div>
+      </div>
+      <div class="card">
+        <div style="margin-bottom:18px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+            <span class="label" style="margin:0;">Cert Hours</span>
+            <span class="mono" style="font-size:12px;color:var(--text-1);">${certHoursLogged.toFixed(1)} / ${certHoursTotal}</span>
+          </div>
+          <div class="bar-track" style="height:3px;">
+            <div class="bar-fill" style="width:${(certHoursLogged/certHoursTotal*100).toFixed(1)}%"></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+            <span class="label" style="margin:0;">Build Hours</span>
+            <span class="mono" style="font-size:12px;color:var(--text-1);">${buildHoursLogged.toFixed(1)} / ${buildHoursTotal}</span>
+          </div>
+          <div class="bar-track" style="height:3px;">
+            <div class="bar-fill" style="width:${(buildHoursLogged/buildHoursTotal*100).toFixed(1)}%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Investment</div>
+        <div class="section-meta">cert spend</div>
+      </div>
+      <div class="card" style="text-align:center;padding:28px;">
+        <div class="label" style="margin-top:0;">Cert cost passed</div>
+        <div class="mono" style="font-size:32px;font-weight:300;color:var(--text-1);letter-spacing:-0.02em;">¥${totalCost.toLocaleString()}</div>
+        <div class="mono" style="font-size:11px;color:var(--text-3);margin-top:6px;letter-spacing:0.04em;">OF ¥83,700 PLANNED</div>
+      </div>
+    </div>
+
+    <div class="danger-zone">
+      <button class="btn btn-danger" id="reset-btn">Reset all progress</button>
+    </div>
+  `;
+}
+
+//============================================================
+// MAIN RENDER
+//============================================================
+
+function render() {
+  const content = document.getElementById('content');
+  let html = '';
+  if (activeTab === 'now') html = renderNow();
+  else if (activeTab === 'certs') html = renderCerts();
+  else if (activeTab === 'builds') html = renderBuilds();
+  else if (activeTab === 'cram') html = renderCram();
+  else if (activeTab === 'stats') html = renderStats();
+  content.innerHTML = html;
+  attachListeners();
+}
+
+//============================================================
+// LISTENERS
+//============================================================
+
+function attachListeners() {
+  document.querySelectorAll('.tab').forEach(t => {
+    t.onclick = () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      activeTab = t.dataset.tab;
+      expandedItem = null;
+      render();
+    };
+  });
+
+  document.querySelectorAll('[data-toggle]').forEach(el => {
+    el.onclick = () => {
+      const id = el.dataset.toggle;
+      expandedItem = expandedItem === id ? null : id;
+      render();
+    };
+  });
+
+  let selectedHours = null;
+  document.querySelectorAll('.chip[data-hours]').forEach(c => {
+    c.onclick = () => {
+      document.querySelectorAll('.chip[data-hours]').forEach(x => x.classList.remove('selected'));
+      c.classList.add('selected');
+      selectedHours = parseFloat(c.dataset.hours);
+      const customInput = document.getElementById('ql-custom');
+      if (customInput) customInput.value = '';
+    };
+  });
+
+  const customInput = document.getElementById('ql-custom');
+  if (customInput) {
+    customInput.oninput = () => {
+      document.querySelectorAll('.chip[data-hours]').forEach(x => x.classList.remove('selected'));
+      selectedHours = null;
+    };
+  }
+
+  const submitBtn = document.getElementById('ql-submit');
+  if (submitBtn) {
+    submitBtn.onclick = async () => {
+      const target = document.getElementById('ql-target').value;
+      const custom = parseFloat(document.getElementById('ql-custom').value);
+      const hours = !isNaN(custom) && custom > 0 ? custom : selectedHours;
+      if (!hours || hours <= 0) {
+        showToast('Pick a duration', true);
+        return;
+      }
+      await logSession(target, hours);
+    };
+  }
+
+  document.querySelectorAll('[data-update-notes]').forEach(el => {
+    el.oninput = () => updateNotes(el.dataset.updateNotes, el.value);
+  });
+
+  document.querySelectorAll('[data-update-github]').forEach(el => {
+    el.oninput = () => updateBuildGithub(el.dataset.updateGithub, el.value);
+  });
+
+  document.querySelectorAll('[data-update-date]').forEach(el => {
+    el.onchange = () => updateTargetDate(el.dataset.updateDate, el.value);
+  });
+
+  document.querySelectorAll('[data-action]').forEach(b => {
+    b.onclick = (e) => {
+      e.stopPropagation();
+      const action = b.dataset.action;
+      const id = b.dataset.id;
+      if (action === 'pass') markPassed(id);
+      if (action === 'unpass') unmarkPassed(id);
+      if (action === 'ship') markBuildShipped(id);
+      if (action === 'unship') unmarkBuild(id);
+    };
+  });
+
+  const cramCert = document.getElementById('cram-cert');
+  if (cramCert) {
+    cramCert.onchange = () => {
+      cramState.certId = cramCert.value;
+      render();
+    };
+  }
+  const hpd = document.getElementById('cram-hpd');
+  const dpw = document.getElementById('cram-dpw');
+  if (hpd && dpw) {
+    hpd.oninput = () => {
+      cramState.hoursPerDay = parseFloat(hpd.value);
+      const v = document.getElementById('cram-hpd-val');
+      if (v) v.textContent = `${cramState.hoursPerDay.toFixed(1)}h`;
+    };
+    hpd.onchange = () => render();
+    dpw.oninput = () => {
+      cramState.daysPerWeek = parseInt(dpw.value);
+      const v = document.getElementById('cram-dpw-val');
+      if (v) v.textContent = cramState.daysPerWeek;
+    };
+    dpw.onchange = () => render();
+  }
+
+  const resetBtn = document.getElementById('reset-btn');
+  if (resetBtn) resetBtn.onclick = resetState;
+}
+
+//============================================================
+// THEME
+//============================================================
+
+function getStoredTheme() {
+  try { return localStorage.getItem('roadmap_theme'); } catch (e) { return null; }
+}
+function setStoredTheme(t) {
+  try { localStorage.setItem('roadmap_theme', t); } catch (e) {}
+}
+function applyTheme(t) {
+  if (t === 'light' || t === 'dark') {
+    document.documentElement.setAttribute('data-theme', t);
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+}
+function getCurrentEffectiveTheme() {
+  const stored = getStoredTheme();
+  if (stored === 'light' || stored === 'dark') return stored;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+document.getElementById('theme-toggle').onclick = () => {
+  const current = getCurrentEffectiveTheme();
+  const next = current === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  setStoredTheme(next);
+};
+
+(function initTheme() {
+  const stored = getStoredTheme();
+  if (stored) applyTheme(stored);
+})();
+
+//============================================================
+// PASSWORD GATE
+//============================================================
+
+function checkUnlocked() {
+  try { return sessionStorage.getItem('roadmap_unlocked') === '1'; } catch (e) { return false; }
+}
+function setUnlocked() {
+  try { sessionStorage.setItem('roadmap_unlocked', '1'); } catch (e) {}
+}
+
+async function unlock() {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  await loadState();
+  render();
+}
+
+const gateInput = document.getElementById('gate-input');
+gateInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    if (gateInput.value === PASSCODE) {
+      setUnlocked();
+      unlock();
+    } else {
+      gateInput.classList.add('shake');
+      setTimeout(() => {
+        gateInput.classList.remove('shake');
+        gateInput.value = '';
+      }, 400);
+    }
+  }
+});
+
+(function init() {
+  if (checkUnlocked()) {
+    unlock();
+  } else {
+    setTimeout(() => gateInput.focus(), 100);
+  }
+})();
+</script>
+
+</body>
+</html>
