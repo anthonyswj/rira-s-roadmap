@@ -1,0 +1,2072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f5f2ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1c1a17" media="(prefers-color-scheme: dark)">
+<title>Roadmap · iOS + AI</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f2ec;
+    --bg-warm: #ede8dc;
+    --surface: #fdfbf6;
+    --surface-2: #efebe2;
+    --surface-raised: #ffffff;
+    --surface-recess: #ebe6dc;
+    --text-1: #1a1a1a;
+    --text-2: #6b6864;
+    --text-3: #a39f97;
+    --text-4: #c8c4ba;
+    --border: #d8d4ca;
+    --border-strong: #b8b3a6;
+    --accent: #e85d24;
+    --accent-soft: rgba(232, 93, 36, 0.1);
+    --accent-glow: rgba(232, 93, 36, 0.25);
+    --accent-strong: #c84810;
+    --accent-bright: #ff7540;
+    --purple: #8e47a3;
+    --purple-soft: rgba(142, 71, 163, 0.12);
+    --success: #2d8659;
+    --success-soft: rgba(45, 134, 89, 0.1);
+    --warning: #c97a14;
+    --warning-soft: rgba(201, 122, 20, 0.1);
+    --danger: #b83020;
+    --danger-soft: rgba(184, 48, 32, 0.1);
+    --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(60, 50, 30, 0.04);
+    --shadow-inset-deep: inset 0 1px 2px rgba(60, 50, 30, 0.1), inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+    --shadow-subtle: 0 1px 2px rgba(60, 50, 30, 0.05), 0 1px 1px rgba(60, 50, 30, 0.03);
+    --shadow-card: 0 2px 4px rgba(60, 50, 30, 0.05), 0 1px 2px rgba(60, 50, 30, 0.08), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+    --shadow-raised: 0 6px 12px rgba(60, 50, 30, 0.08), 0 2px 4px rgba(60, 50, 30, 0.1), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+    --shadow-button: 0 1px 0 rgba(60, 50, 30, 0.08), 0 2px 4px rgba(60, 50, 30, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    --glass-border: rgba(255, 255, 255, 0.4);
+  }
+  [data-theme="dark"] {
+    --bg: #1c1a17;
+    --bg-warm: #181612;
+    --surface: #252320;
+    --surface-2: #2e2c28;
+    --surface-raised: #2a2824;
+    --surface-recess: #1a1815;
+    --text-1: #f0ede5;
+    --text-2: #9c9a92;
+    --text-3: #67635c;
+    --text-4: #45413a;
+    --border: #38342e;
+    --border-strong: #524d44;
+    --accent: #ff7a3e;
+    --accent-soft: rgba(255, 122, 62, 0.13);
+    --accent-glow: rgba(255, 122, 62, 0.35);
+    --accent-strong: #ff9258;
+    --accent-bright: #ffa070;
+    --purple: #b76dcd;
+    --purple-soft: rgba(183, 109, 205, 0.16);
+    --success: #5ec083;
+    --success-soft: rgba(94, 192, 131, 0.13);
+    --warning: #d99441;
+    --warning-soft: rgba(217, 148, 65, 0.13);
+    --danger: #d85a4b;
+    --danger-soft: rgba(216, 90, 75, 0.13);
+    --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    --shadow-inset-deep: inset 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+    --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+    --shadow-raised: 0 6px 16px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+    --shadow-button: 0 1px 0 rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1c1a17;
+      --bg-warm: #181612;
+      --surface: #252320;
+      --surface-2: #2e2c28;
+      --surface-raised: #2a2824;
+      --surface-recess: #1a1815;
+      --text-1: #f0ede5;
+      --text-2: #9c9a92;
+      --text-3: #67635c;
+      --text-4: #45413a;
+      --border: #38342e;
+      --border-strong: #524d44;
+      --accent: #ff7a3e;
+      --accent-soft: rgba(255, 122, 62, 0.13);
+      --accent-glow: rgba(255, 122, 62, 0.35);
+      --accent-strong: #ff9258;
+      --accent-bright: #ffa070;
+      --purple: #b76dcd;
+      --purple-soft: rgba(183, 109, 205, 0.16);
+      --success: #5ec083;
+      --success-soft: rgba(94, 192, 131, 0.13);
+      --warning: #d99441;
+      --warning-soft: rgba(217, 148, 65, 0.13);
+      --danger: #d85a4b;
+      --danger-soft: rgba(216, 90, 75, 0.13);
+      --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+      --shadow-inset-deep: inset 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+      --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.4);
+      --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+      --shadow-raised: 0 6px 16px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+      --shadow-button: 0 1px 0 rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.08);
+    }
+  }
+  html, body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: var(--text-1);
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at 10% 0%, var(--bg-warm) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 100%, rgba(232, 93, 36, 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
+    font-feature-settings: "kern", "tnum";
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  [data-theme="dark"] body,
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-image:
+        radial-gradient(ellipse at 10% 0%, var(--bg-warm) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 100%, rgba(255, 122, 62, 0.04) 0%, transparent 50%);
+    }
+  }
+  body { min-height: 100vh; padding: 24px 16px 80px; }
+  .mono { font-family: ui-monospace, 'SF Mono', 'Menlo', monospace; font-feature-settings: "tnum"; letter-spacing: -0.01em; }
+  #app { width: 100%; max-width: 640px; margin: 0 auto; }
+  .header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 4px 24px; border-bottom: 1px solid var(--border);
+    margin-bottom: 28px; position: relative;
+  }
+  .header::after {
+    content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+    opacity: 0.4;
+  }
+  .brand-mark { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; color: var(--text-3); text-transform: uppercase; }
+  .brand-title { font-size: 20px; font-weight: 600; letter-spacing: -0.015em; color: var(--text-1); }
+  .theme-toggle {
+    width: 38px; height: 38px;
+    border: 1px solid var(--border-strong); background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface) 100%);
+    border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    color: var(--text-2); transition: all 0.2s ease;
+    box-shadow: var(--shadow-button);
+  }
+  .theme-toggle:hover { color: var(--text-1); transform: translateY(-1px); box-shadow: 0 2px 6px rgba(60, 50, 30, 0.15), var(--shadow-inset); }
+  .theme-toggle:active { transform: translateY(0); box-shadow: var(--shadow-inset-deep); }
+  .tabs {
+    display: flex; gap: 22px; margin-bottom: 28px; border-bottom: 1px solid var(--border);
+    padding: 0 4px; overflow-x: auto; scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    background: transparent; border: none; border-bottom: 2px solid transparent;
+    padding: 10px 0; color: var(--text-3); font-size: 13px; font-weight: 500;
+    cursor: pointer; font-family: inherit; transition: all 0.2s ease;
+    white-space: nowrap; margin-bottom: -1px;
+  }
+  .tab:hover { color: var(--text-2); }
+  .tab.active { color: var(--text-1); border-bottom-color: var(--accent); }
+  .section { margin-bottom: 32px; }
+  .section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; padding: 0 4px; }
+  .section-title { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); }
+  .section-meta { font-size: 11px; color: var(--text-3); }
+  /* Hero with subtle glass hint on the tag */
+  .hero {
+    padding: 36px 28px; position: relative;
+    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface) 100%);
+    border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  }
+  .hero-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+  .hero-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); }
+  .hero-tag {
+    font-size: 10px; color: var(--accent);
+    background: linear-gradient(180deg, rgba(232, 93, 36, 0.14), rgba(232, 93, 36, 0.08));
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    padding: 5px 10px; border-radius: 12px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border: 1px solid rgba(232, 93, 36, 0.25);
+    box-shadow: 0 1px 0 var(--glass-border) inset, 0 1px 2px rgba(232, 93, 36, 0.1);
+  }
+  .hero-number {
+    font-size: 88px; font-weight: 200; letter-spacing: -0.04em; line-height: 0.95;
+    color: var(--text-1); margin-bottom: 12px; font-variant-numeric: tabular-nums;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+  }
+  [data-theme="dark"] .hero-number, @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero-number { text-shadow: 0 1px 0 rgba(0,0,0,0.4); } }
+  .hero-number.warning { color: var(--warning); }
+  .hero-label { font-size: 14px; color: var(--text-2); }
+  .hero-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 24px 0; }
+  .hero-data { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .data-cell { border-right: 1px solid var(--border); padding-right: 16px; }
+  .data-cell:last-child { border-right: none; padding-right: 0; }
+  .data-cell:not(:first-child) { padding-left: 16px; }
+  .data-label { font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 6px; }
+  .data-value { font-size: 22px; font-weight: 300; letter-spacing: -0.02em; color: var(--text-1); font-variant-numeric: tabular-nums; }
+  .card {
+    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface) 100%);
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 24px; margin-bottom: 14px;
+    box-shadow: var(--shadow-card);
+  }
+  /* Weekly calendar — more tactile */
+  .cal-week {
+    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface) 100%);
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px; margin-bottom: 16px;
+    box-shadow: var(--shadow-card);
+  }
+  .cal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 4px 12px; margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cal-title { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); }
+  .cal-week-label { font-size: 11px; color: var(--text-2); font-variant-numeric: tabular-nums; }
+  .cal-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .cal-day {
+    aspect-ratio: 1 / 1.15;
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 4px;
+    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--bg) 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+    transition: all 0.2s ease;
+    position: relative;
+    cursor: pointer;
+    box-shadow: var(--shadow-subtle), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+  [data-theme="dark"] .cal-day, @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .cal-day { box-shadow: var(--shadow-subtle), inset 0 1px 0 rgba(255, 255, 255, 0.04); } }
+  .cal-day:hover { border-color: var(--border-strong); transform: translateY(-1px); box-shadow: 0 2px 4px rgba(60, 50, 30, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
+  .cal-day:active { transform: translateY(0); box-shadow: var(--shadow-inset-deep); }
+  .cal-day-label { font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
+  .cal-day-date { font-size: 15px; font-weight: 500; color: var(--text-2); font-variant-numeric: tabular-nums; }
+  .cal-day-plan { font-size: 8px; font-weight: 600; color: var(--text-3); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 1px; }
+  .cal-day.has-session {
+    background: linear-gradient(180deg, var(--accent-bright) 0%, var(--accent-strong) 100%);
+    border-color: var(--accent-strong);
+    box-shadow: 0 1px 3px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.15);
+  }
+  .cal-day.has-session .cal-day-label { color: rgba(255,255,255,0.8); }
+  .cal-day.has-session .cal-day-date { color: white; font-weight: 600; }
+  .cal-day.has-session .cal-day-plan { color: rgba(255,255,255,0.9); }
+  .cal-day.today { border-color: var(--text-1); border-width: 1.5px; }
+  .cal-day.today.has-session { border-color: white; }
+  .cal-day.future { opacity: 0.7; }
+  .cal-day.rest-day { background: var(--surface-recess); box-shadow: var(--shadow-inset-deep); }
+  .cal-day.rest-day .cal-day-plan { color: var(--text-4); }
+  /* Item list with more depth */
+  .item {
+    background: var(--surface); border: 1px solid var(--border); border-top: none;
+    transition: background-color 0.2s ease;
+  }
+  .item:first-of-type { border-top: 1px solid var(--border); border-radius: 10px 10px 0 0; }
+  .item:last-of-type { border-radius: 0 0 10px 10px; }
+  .item:only-of-type { border-radius: 10px; }
+  .item.expanded { background: linear-gradient(180deg, var(--surface-2) 0%, var(--surface) 100%); }
+  .item.passed { opacity: 0.65; }
+  .item-row { display: flex; align-items: center; gap: 16px; padding: 18px 22px; cursor: pointer; transition: background-color 0.2s ease; }
+  .item-row:hover { background: var(--surface-2); }
+  .item.expanded .item-row { background: transparent; }
+  .item-num { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: var(--text-3); width: 28px; flex-shrink: 0; }
+  .item-status {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; background: var(--text-4);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.15), 0 1px 0 rgba(255,255,255,0.2);
+  }
+  .item-status.in-progress {
+    background: radial-gradient(circle at 35% 30%, var(--accent-bright), var(--accent-strong));
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 0 0 3px var(--accent-soft), 0 1px 2px var(--accent-glow);
+  }
+  .item-status.passed {
+    background: radial-gradient(circle at 35% 30%, #58b37e, var(--success));
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 0 0 3px var(--success-soft);
+  }
+  .item-body { flex: 1; min-width: 0; }
+  .item-title { font-size: 14px; font-weight: 500; color: var(--text-1); margin-bottom: 4px; letter-spacing: -0.005em; }
+  .item-meta { font-size: 11px; color: var(--text-3); letter-spacing: 0.02em; }
+  .item-progress-text { font-size: 11px; color: var(--text-2); text-align: right; flex-shrink: 0; min-width: 70px; }
+  .item-arrow { width: 8px; height: 8px; border-right: 1.5px solid var(--text-3); border-bottom: 1.5px solid var(--text-3); transform: rotate(45deg); transition: transform 0.2s ease; flex-shrink: 0; }
+  .item.expanded .item-arrow { transform: rotate(-135deg); margin-top: 4px; }
+  .item-detail { display: none; padding: 0 22px 22px; border-top: 1px solid var(--border); padding-top: 18px; }
+  .item.expanded .item-detail { display: block; }
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  .detail-field {
+    padding: 10px 12px; background: var(--surface-recess); border: 1px solid var(--border);
+    border-radius: 8px; box-shadow: var(--shadow-inset-deep);
+  }
+  .detail-field-label { font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 5px; }
+  .detail-field-value { font-size: 13px; color: var(--text-1); font-variant-numeric: tabular-nums; }
+  .detail-field-value input { width: 100%; background: transparent; border: none; color: var(--text-1); font-size: 13px; font-family: inherit; font-variant-numeric: tabular-nums; outline: none; }
+  .detail-field-value input.mono { font-family: ui-monospace, 'SF Mono', monospace; }
+  .bar-track {
+    height: 4px; background: var(--surface-recess); margin-top: 10px; overflow: hidden;
+    border-radius: 3px; box-shadow: var(--shadow-inset-deep);
+  }
+  .bar-fill {
+    height: 100%; background: linear-gradient(180deg, var(--accent-bright) 0%, var(--accent-strong) 100%);
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 4px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.3);
+    border-radius: 3px;
+  }
+  .bar-fill.success { background: linear-gradient(180deg, #58b37e 0%, var(--success) 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.25); }
+  .input, .select, .textarea {
+    width: 100%; background: var(--surface-recess); border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px 12px; color: var(--text-1); font-size: 13px; font-family: inherit;
+    transition: all 0.2s ease; -webkit-appearance: none; appearance: none;
+    box-shadow: var(--shadow-inset-deep);
+  }
+  .select { background-image: linear-gradient(45deg, transparent 50%, var(--text-3) 50%), linear-gradient(135deg, var(--text-3) 50%, transparent 50%); background-position: calc(100% - 16px) center, calc(100% - 11px) center; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; padding-right: 32px; }
+  .input:focus, .select:focus, .textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-inset-deep); }
+  .textarea { min-height: 60px; resize: vertical; line-height: 1.5; }
+  .label { font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); display: block; margin-bottom: 6px; margin-top: 16px; }
+  .label:first-of-type { margin-top: 0; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 11px 16px; border: 1px solid var(--accent-strong);
+    background: linear-gradient(180deg, var(--accent-bright) 0%, var(--accent) 48%, var(--accent-strong) 100%);
+    color: white; border-radius: 8px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+    cursor: pointer; font-family: inherit; transition: all 0.15s ease;
+    box-shadow: var(--shadow-button), 0 2px 4px var(--accent-glow);
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+  }
+  .btn:hover { filter: brightness(1.05); transform: translateY(-1px); box-shadow: 0 3px 6px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.3); }
+  .btn:active { transform: translateY(0); filter: brightness(0.92); box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); }
+  .btn-secondary {
+    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--border-strong); color: var(--text-1);
+    box-shadow: var(--shadow-button);
+    text-shadow: none;
+  }
+  .btn-secondary:hover { background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface) 100%); box-shadow: 0 2px 4px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.4); }
+  .btn-success { background: linear-gradient(180deg, #5fb883 0%, var(--success) 48%, #246e49 100%); border-color: #246e49; box-shadow: var(--shadow-button), 0 2px 4px rgba(45, 134, 89, 0.25); }
+  .btn-danger {
+    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface) 100%);
+    border: 1px solid var(--danger); color: var(--danger);
+    box-shadow: var(--shadow-button); text-shadow: none;
+  }
+  .btn-danger:hover { background: var(--danger-soft); }
+  .btn-add { width: 100%; padding: 14px; border: 1px dashed var(--border-strong); background: transparent; color: var(--text-2); border-radius: 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; font-family: inherit; transition: all 0.2s ease; margin-top: 10px; box-shadow: none; text-shadow: none; }
+  .btn-add:hover { color: var(--accent); border-color: var(--accent); border-style: solid; transform: none; }
+  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .chip-row { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0 0; }
+  .chip {
+    padding: 9px 14px;
+    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--border-strong);
+    color: var(--text-2); border-radius: 8px; font-size: 12px; font-weight: 500;
+    cursor: pointer; transition: all 0.15s ease; font-family: inherit;
+    box-shadow: var(--shadow-button);
+  }
+  .chip:hover { color: var(--text-1); transform: translateY(-1px); }
+  .chip:active { transform: translateY(0); box-shadow: inset 0 2px 3px rgba(0,0,0,0.1); }
+  .chip.selected {
+    background: linear-gradient(180deg, var(--accent-bright) 0%, var(--accent) 48%, var(--accent-strong) 100%);
+    color: white; border-color: var(--accent-strong);
+    box-shadow: 0 2px 4px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.3);
+    text-shadow: 0 1px 0 rgba(0,0,0,0.1);
+  }
+  /* AI Coach — subtle glass pane */
+  .ai-coach {
+    border-radius: 14px; padding: 1.5px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--purple) 100%);
+    margin-bottom: 16px;
+    box-shadow: var(--shadow-raised);
+  }
+  .ai-coach-inner {
+    background: linear-gradient(180deg, rgba(255,255,255,0.65) 0%, var(--surface) 100%);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-radius: 12px; padding: 22px;
+    position: relative;
+  }
+  [data-theme="dark"] .ai-coach-inner, @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ai-coach-inner { background: linear-gradient(180deg, rgba(46, 44, 40, 0.85) 0%, var(--surface) 100%); } }
+  .ai-coach-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    background: linear-gradient(90deg, var(--accent), var(--purple));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    margin-bottom: 10px;
+  }
+  .ai-coach-button {
+    display: flex; align-items: center; gap: 10px;
+    width: 100%; padding: 14px 16px;
+    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px; color: var(--text-1); font-size: 13px; font-weight: 500;
+    font-family: inherit; cursor: pointer; transition: all 0.2s ease;
+    text-align: left; box-shadow: var(--shadow-button);
+  }
+  .ai-coach-button:hover { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-button); }
+  .ai-coach-button:disabled { opacity: 0.6; cursor: wait; }
+  .ai-coach-icon {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--accent-bright), var(--accent) 40%, var(--purple));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 14px; flex-shrink: 0; font-weight: 600;
+    box-shadow: 0 2px 6px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.4);
+  }
+  .ai-coach-output {
+    margin-top: 16px; padding: 18px 20px;
+    background: var(--surface-recess); border: 1px solid var(--border);
+    border-radius: 10px; font-size: 14px; line-height: 1.6; color: var(--text-1);
+    white-space: pre-wrap;
+    box-shadow: var(--shadow-inset-deep);
+  }
+  .ai-coach-meta { font-size: 10px; color: var(--text-3); margin-top: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .ai-typing::after { content: '▊'; color: var(--accent); animation: blink 0.8s infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .cram-result {
+    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--border); border-radius: 10px; padding: 28px; margin-top: 20px; text-align: center;
+    box-shadow: var(--shadow-card);
+  }
+  .cram-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
+  .cram-date { font-size: 32px; font-weight: 300; letter-spacing: -0.025em; margin: 4px 0 12px; color: var(--text-1); }
+  .cram-delta { display: inline-flex; padding: 5px 12px; border-radius: 12px; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+  .cram-delta.faster { background: var(--success-soft); color: var(--success); border: 1px solid rgba(45, 134, 89, 0.25); }
+  .cram-delta.slower { background: var(--warning-soft); color: var(--warning); border: 1px solid rgba(201, 122, 20, 0.25); }
+  .cram-delta.same { background: var(--surface); color: var(--text-2); border: 1px solid var(--border); }
+  .cram-summary { font-size: 11px; color: var(--text-3); margin-top: 16px; letter-spacing: 0.02em; }
+  .slider-row { margin: 20px 0; }
+  .slider-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .slider-label { font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); }
+  .slider-value { font-size: 18px; font-weight: 400; color: var(--text-1); font-variant-numeric: tabular-nums; }
+  input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 5px; background: var(--surface-recess); outline: none; border-radius: 3px; box-shadow: var(--shadow-inset-deep); }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 22px; height: 22px;
+    background: radial-gradient(circle at 35% 30%, var(--accent-bright), var(--accent) 50%, var(--accent-strong));
+    border-radius: 50%; cursor: pointer;
+    box-shadow: 0 2px 4px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.4), 0 0 0 3px var(--bg);
+    transition: transform 0.15s ease;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.1); }
+  input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; background: var(--accent); border-radius: 50%; cursor: pointer; border: none; }
+  .intensity { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .intensity-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .intensity-label { font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); }
+  .intensity-text { font-size: 12px; font-weight: 700; letter-spacing: 0.02em; }
+  .intensity-text.sustainable { color: var(--success); }
+  .intensity-text.intense { color: var(--warning); }
+  .intensity-text.burnout { color: var(--danger); }
+  .intensity-blocks { display: flex; gap: 3px; height: 6px; border-radius: 3px; overflow: hidden; box-shadow: var(--shadow-inset-deep); }
+  .intensity-block { flex: 1; background: var(--border); transition: background 0.3s ease; }
+  .intensity-block.on-sustainable { background: var(--success); }
+  .intensity-block.on-intense { background: var(--warning); }
+  .intensity-block.on-burnout { background: var(--danger); }
+  .intensity-note { font-size: 11px; color: var(--text-2); margin-top: 12px; line-height: 1.5; }
+  .week-strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-top: 16px; }
+  .day-cell {
+    aspect-ratio: 1;
+    background: linear-gradient(180deg, var(--surface-raised), var(--bg));
+    border: 1px solid var(--border); border-radius: 6px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    box-shadow: var(--shadow-subtle);
+  }
+  .day-label { font-size: 9px; color: var(--text-3); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+  .day-value { font-size: 13px; color: var(--text-2); font-weight: 500; margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .day-cell.has {
+    background: linear-gradient(180deg, var(--accent-bright) 0%, var(--accent-strong) 100%);
+    border-color: var(--accent-strong);
+    box-shadow: 0 1px 2px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+  .day-cell.has .day-label { color: rgba(255,255,255,0.8); }
+  .day-cell.has .day-value { color: white; }
+  .day-cell.today { border-color: var(--text-1); border-width: 2px; }
+  /* Stats graph */
+  .graph-wrap {
+    padding: 20px 14px 12px;
+    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface) 100%);
+    border-radius: 10px; border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+  }
+  .graph-svg { width: 100%; height: 160px; display: block; }
+  .graph-axis { font-size: 9px; fill: var(--text-3); font-family: ui-monospace, 'SF Mono', monospace; letter-spacing: 0.04em; }
+  .graph-bar { transition: opacity 0.2s ease; }
+  .graph-bar:hover { opacity: 0.75; }
+  .graph-hline { stroke: var(--border); stroke-width: 1; stroke-dasharray: 2 3; }
+  .graph-label-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding: 0 2px; font-size: 10px; color: var(--text-3); letter-spacing: 0.06em; text-transform: uppercase; }
+  .graph-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; padding: 12px 14px; background: var(--surface-recess); border-radius: 8px; box-shadow: var(--shadow-inset-deep); }
+  .legend-item { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-2); }
+  .legend-swatch { width: 10px; height: 10px; border-radius: 3px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.25); }
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: var(--text-1); color: var(--bg);
+    padding: 12px 20px; border-radius: 10px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+    opacity: 0; pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1000;
+    box-shadow: var(--shadow-raised);
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.error { background: var(--danger); color: white; }
+  .footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; }
+  .sync { display: inline-flex; align-items: center; gap: 6px; }
+  .sync-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--success); box-shadow: 0 0 6px var(--success), inset 0 1px 0 rgba(255,255,255,0.3); }
+  .sync-dot.syncing { background: var(--warning); animation: pulse 1s infinite; }
+  .sync-dot.error { background: var(--danger); }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .today-card {
+    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface) 100%);
+    border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0; padding: 18px 22px; margin-bottom: 14px;
+    box-shadow: var(--shadow-card);
+  }
+  .today-card-text { font-size: 14px; line-height: 1.55; color: var(--text-1); }
+  .today-card-icon { font-size: 10px; color: var(--accent); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
+  .phase-line { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; margin-bottom: 8px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); }
+  #gate { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; z-index: 9999; }
+  .gate-inner { width: 100%; max-width: 280px; padding: 32px 24px; text-align: center; }
+  .gate-mark { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; color: var(--text-3); text-transform: uppercase; margin-bottom: 8px; }
+  .gate-title { font-size: 24px; font-weight: 400; letter-spacing: -0.02em; color: var(--text-1); margin-bottom: 32px; }
+  .gate-input { width: 100%; background: transparent; border: none; border-bottom: 1.5px solid var(--text-3); padding: 14px 0; font-size: 32px; font-weight: 300; text-align: center; color: var(--text-1); font-family: ui-monospace, monospace; letter-spacing: 0.4em; outline: none; transition: border-color 0.2s ease; }
+  .gate-input:focus { border-bottom-color: var(--accent); }
+  .gate-input.shake { animation: shake 0.4s; border-bottom-color: var(--danger); }
+  @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+  .gate-hint { font-size: 10px; color: var(--text-3); margin-top: 16px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .empty { text-align: center; padding: 40px 20px; color: var(--text-3); font-size: 13px; }
+  .danger-zone { margin-top: 32px; padding: 18px; border: 1px dashed var(--border-strong); border-radius: 10px; text-align: center; }
+  .badge { display: inline-block; font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; margin-left: 8px; vertical-align: middle; }
+  .badge.cert { background: var(--accent-soft); color: var(--accent); }
+  .badge.course { background: var(--success-soft); color: var(--success); }
+  .badge.app { background: var(--warning-soft); color: var(--warning); }
+  .badge.side { background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border); }
+  /* Day modal — glass backdrop with slide-up sheet */
+  .day-modal {
+    position: fixed; inset: 0; background: rgba(28, 26, 23, 0.55);
+    display: none; align-items: flex-end; justify-content: center;
+    z-index: 999; padding: 12px;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .day-modal.show { display: flex; }
+  .day-modal-inner {
+    background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface) 100%);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    width: 100%; max-width: 440px; padding: 24px;
+    max-height: 85vh; overflow-y: auto;
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.25), 0 1px 0 rgba(255,255,255,0.6) inset;
+    animation: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  [data-theme="dark"] .day-modal-inner, @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .day-modal-inner { box-shadow: 0 -8px 32px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.06) inset; } }
+  @keyframes slide-up { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .day-modal-handle { width: 36px; height: 4px; background: var(--border-strong); border-radius: 2px; margin: 0 auto 16px; }
+  .day-modal-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .day-modal-title { font-size: 18px; font-weight: 600; color: var(--text-1); letter-spacing: -0.015em; }
+  .day-modal-date { font-size: 11px; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+  .day-modal-section { margin-top: 20px; }
+  .day-modal-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
+  .claude-card {
+    border-radius: 12px; padding: 1.5px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--purple) 100%);
+    box-shadow: 0 2px 8px var(--accent-glow);
+  }
+  .claude-inner {
+    background: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, var(--surface) 100%);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-radius: 10px; padding: 18px;
+  }
+  [data-theme="dark"] .claude-inner, @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .claude-inner { background: linear-gradient(180deg, rgba(46, 44, 40, 0.85) 0%, var(--surface) 100%); } }
+  .claude-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .claude-mark {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--accent-bright), var(--accent) 40%, var(--purple));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 12px; font-weight: 700;
+    box-shadow: 0 1px 4px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.4);
+  }
+  .claude-title { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; background: linear-gradient(90deg, var(--accent), var(--purple)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .claude-block {
+    padding: 12px 14px; margin-bottom: 8px;
+    background: var(--surface-recess); border: 1px solid var(--border);
+    border-radius: 8px; display: flex; align-items: center; gap: 12px;
+    box-shadow: var(--shadow-inset);
+  }
+  .claude-block:last-child { margin-bottom: 0; }
+  .claude-block-time { font-size: 10px; color: var(--text-3); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; min-width: 54px; }
+  .claude-block-body { flex: 1; }
+  .claude-block-track { font-size: 13px; font-weight: 500; color: var(--text-1); }
+  .claude-block-meta { font-size: 11px; color: var(--text-2); margin-top: 2px; }
+  .claude-block.rest { opacity: 0.7; }
+  .claude-block.rest .claude-block-track { color: var(--text-2); font-style: italic; font-weight: 400; }
+  .claude-footnote { font-size: 11px; color: var(--text-2); margin-top: 14px; line-height: 1.5; padding-top: 12px; border-top: 1px solid var(--border); }
+  .session-row {
+    padding: 14px 16px; margin-bottom: 6px;
+    background: var(--surface-recess); border: 1px solid var(--border);
+    border-radius: 8px; display: flex; justify-content: space-between; align-items: center;
+    box-shadow: var(--shadow-inset);
+  }
+  .session-row:last-child { margin-bottom: 0; }
+  .session-track { font-size: 13px; color: var(--text-1); font-weight: 500; }
+  .session-time { font-size: 10px; color: var(--text-3); margin-top: 2px; letter-spacing: 0.04em; }
+  .session-hours { font-size: 14px; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .session-check {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; margin-top: 10px;
+    background: var(--success-soft); border: 1px solid rgba(45, 134, 89, 0.25);
+    border-radius: 10px;
+    font-size: 11px; color: var(--success); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .session-miss {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; margin-top: 10px;
+    background: var(--warning-soft); border: 1px solid rgba(201, 122, 20, 0.25);
+    border-radius: 10px;
+    font-size: 11px; color: var(--warning); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  @media (max-width: 480px) {
+    body { padding: 16px 12px 60px; }
+    .brand-title { font-size: 18px; }
+    .hero { padding: 28px 22px; }
+    .hero-number { font-size: 64px; }
+    .data-value { font-size: 18px; }
+    .item-row { padding: 16px 18px; gap: 12px; }
+    .tabs { gap: 16px; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .cal-day { padding: 6px 2px; }
+    .cal-day-date { font-size: 13px; }
+    .cal-day-label { font-size: 8px; }
+    .cal-day-plan { font-size: 7px; }
+  }
+</style>
+</head>
+<body>
+<div id="gate">
+  <div class="gate-inner">
+    <div class="gate-mark">Roadmap · 2026</div>
+    <div class="gate-title">Passcode</div>
+    <input type="password" id="gate-input" class="gate-input mono" inputmode="numeric" maxlength="4" autocomplete="off">
+    <div class="gate-hint">4 digits</div>
+  </div>
+</div>
+<div id="app" style="display: none;">
+  <header class="header">
+    <div>
+      <div class="brand-mark">Roadmap · iOS + AI</div>
+      <div class="brand-title">18-Month Plan</div>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <circle cx="7" cy="7" r="3" fill="currentColor"/>
+        <path d="M7 1V2M7 12V13M13 7H12M2 7H1M11.24 2.76L10.54 3.46M3.46 10.54L2.76 11.24M11.24 11.24L10.54 10.54M3.46 3.46L2.76 2.76" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+  <nav class="tabs">
+    <button class="tab active" data-tab="now">Now</button>
+    <button class="tab" data-tab="certs">Certs</button>
+    <button class="tab" data-tab="swiftui">SwiftUI</button>
+    <button class="tab" data-tab="apps">Apps</button>
+    <button class="tab" data-tab="design">Design</button>
+    <button class="tab" data-tab="cram">Cram</button>
+    <button class="tab" data-tab="stats">Stats</button>
+  </nav>
+  <main id="content"></main>
+  <footer class="footer">
+    <div>v2.2 · iOS + AI</div>
+    <div class="sync">
+      <span class="sync-dot" id="sync-dot"></span>
+      <span id="sync-text">Synced</span>
+    </div>
+  </footer>
+</div>
+<div class="toast" id="toast"></div>
+<div class="day-modal" id="day-modal">
+  <div class="day-modal-inner" id="day-modal-inner">
+    <div class="day-modal-handle"></div>
+    <div id="day-modal-content"></div>
+    <div style="margin-top: 16px;">
+      <button class="btn btn-secondary" style="width:100%;" id="day-modal-close-btn">Close</button>
+    </div>
+  </div>
+</div>
+<script>
+const SUPABASE_URL = 'https://tigygpsrjcjpjdmwjoto.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpZ3lncHNyamNqcGpkbXdqb3RvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5OTIwMTAsImV4cCI6MjA5MjU2ODAxMH0.awSNzIt9kgHd_JUy6QD5HhlYX8pAuzbZf6WkY8p-G30';
+const PASSCODE = '1801';
+const ROW_ID = 'main_v2';
+const DEFAULT_CERTS = [
+  { id: 'ai-prac', name: 'AWS AI Practitioner', short: 'AI Practitioner', targetDate: '2026-06-28', hoursTarget: 50, hoursLogged: 0, status: 'in-progress', cost: 15000, notes: '', completedDate: null, kind: 'cert' },
+  { id: 'linuc-101', name: 'LinuC 101', short: 'LinuC 101', targetDate: '2026-06-30', hoursTarget: 80, hoursLogged: 0, status: 'in-progress', cost: 16500, notes: '', completedDate: null, kind: 'cert' },
+  { id: 'linuc-102', name: 'LinuC 102', short: 'LinuC 102', targetDate: '2026-09-15', hoursTarget: 80, hoursLogged: 0, status: 'not-started', cost: 16500, notes: '', completedDate: null, kind: 'cert' },
+  { id: '100-days-swiftui', name: '100 Days of SwiftUI', short: '100 Days', targetDate: '2026-12-31', hoursTarget: 100, hoursLogged: 0, status: 'not-started', cost: 0, notes: 'Paul Hudson, free. 1 hour daily, non-negotiable.', completedDate: null, kind: 'course' }
+];
+const DEFAULT_APPS = [
+  { id: 'app-1', name: 'Utility App', number: 1, description: 'Simple self-use utility. No AI. Goal: complete App Store submission flow.', hoursTarget: 30, hoursLogged: 0, status: 'not-started', githubUrl: '', appStoreUrl: '', notes: '', completedDate: null, plannedStart: '2026-12-01', hasAI: false },
+  { id: 'app-2', name: 'AI Article Reader', number: 2, description: 'Paste JP article URL, get JP summary + EN jargon glossary via Claude API.', hoursTarget: 50, hoursLogged: 0, status: 'not-started', githubUrl: '', appStoreUrl: '', notes: '', completedDate: null, plannedStart: '2027-02-01', hasAI: true },
+  { id: 'app-3', name: 'Polished AI App', number: 3, description: 'Design-award-worthy. AI-powered. Show taste.', hoursTarget: 80, hoursLogged: 0, status: 'not-started', githubUrl: '', appStoreUrl: '', notes: '', completedDate: null, plannedStart: '2027-04-01', hasAI: true },
+  { id: 'app-4', name: 'visionOS App', number: 4, description: 'Small spatial app with AI. First-wave visionOS dev.', hoursTarget: 80, hoursLogged: 0, status: 'not-started', githubUrl: '', appStoreUrl: '', notes: '', completedDate: null, plannedStart: '2027-06-01', hasAI: true }
+];
+const DEFAULT_DESIGN = [
+  { id: 'hig', name: 'Skim iOS HIG sections', description: 'developer.apple.com/design · focus on navigation, layout, materials', hoursTarget: 2, hoursLogged: 0, status: 'not-started', notes: '' },
+  { id: 'figma', name: 'Figma basics', description: 'One YouTube tutorial + sketch App 1 screens before coding', hoursTarget: 3, hoursLogged: 0, status: 'not-started', notes: '' },
+  { id: 'mobbin', name: 'Mobbin reference library', description: 'Browse iOS patterns before designing each new app', hoursTarget: 2, hoursLogged: 0, status: 'not-started', notes: '' },
+  { id: 'sf-symbols', name: 'SF Symbols app', description: 'Install SF Symbols Mac app, browse icon library', hoursTarget: 1, hoursLogged: 0, status: 'not-started', notes: '' },
+  { id: 'wwdc-design', name: 'WWDC design sessions', description: '2-3 recent "Design for" videos. Free.', hoursTarget: 3, hoursLogged: 0, status: 'not-started', notes: '' }
+];
+// Planning map: 0 = Sun, 1 = Mon, ..., 6 = Sat
+// Anthony's plan: MWF = LinuC, TuTh = AI Practitioner, Daily = SwiftUI, Sat = weakest, Sun = rest
+const DAY_PLAN = {
+  0: { label: 'Rest', rest: true, blocks: [] },
+  1: { label: 'Mon', rest: false, blocks: [
+    { track: '100-days-swiftui', time: 'Morning', mins: 60, label: 'SwiftUI · protected slot' },
+    { track: 'linuc-101', time: 'Midday', mins: 60, label: 'LinuC · MWF focus' }
+  ]},
+  2: { label: 'Tue', rest: false, blocks: [
+    { track: '100-days-swiftui', time: 'Morning', mins: 60, label: 'SwiftUI · protected slot' },
+    { track: 'ai-prac', time: 'Midday', mins: 60, label: 'AI Practitioner · TuTh focus' }
+  ]},
+  3: { label: 'Wed', rest: false, blocks: [
+    { track: '100-days-swiftui', time: 'Morning', mins: 60, label: 'SwiftUI · protected slot' },
+    { track: 'linuc-101', time: 'Midday', mins: 60, label: 'LinuC · MWF focus' }
+  ]},
+  4: { label: 'Thu', rest: false, blocks: [
+    { track: '100-days-swiftui', time: 'Morning', mins: 60, label: 'SwiftUI · protected slot' },
+    { track: 'ai-prac', time: 'Midday', mins: 60, label: 'AI Practitioner · TuTh focus' }
+  ]},
+  5: { label: 'Fri', rest: false, blocks: [
+    { track: '100-days-swiftui', time: 'Morning', mins: 60, label: 'SwiftUI · protected slot' },
+    { track: 'linuc-101', time: 'Midday', mins: 60, label: 'LinuC · MWF focus' }
+  ]},
+  6: { label: 'Sat', rest: false, blocks: [
+    { track: '100-days-swiftui', time: 'Morning', mins: 60, label: 'SwiftUI · protected slot' },
+    { track: 'weakest', time: 'Afternoon', mins: 120, label: 'Weakest track · deep work' }
+  ]}
+};
+let state = {
+  version: 2,
+  certs: DEFAULT_CERTS.map(c => ({...c})),
+  apps: DEFAULT_APPS.map(a => ({...a})),
+  design: DEFAULT_DESIGN.map(d => ({...d})),
+  sessions: [],
+  startDate: '2026-04-25',
+  coachOutput: null,
+  coachTimestamp: null,
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+let activeTab = 'now';
+let expandedItem = null;
+let saveTimer = null;
+let coachLoading = false;
+async function supabaseGet() {
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/roadmap_state?id=eq.${ROW_ID}&select=data`, {
+    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+  });
+  if (!r.ok) throw new Error(`Load failed: ${r.status}`);
+  const rows = await r.json();
+  return rows[0]?.data || null;
+}
+async function supabaseSet(data) {
+  const patchR = await fetch(`${SUPABASE_URL}/rest/v1/roadmap_state?id=eq.${ROW_ID}`, {
+    method: 'PATCH',
+    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=representation' },
+    body: JSON.stringify({ data: data, updated_at: new Date().toISOString() })
+  });
+  if (!patchR.ok) throw new Error(`Save failed: ${patchR.status}`);
+  const result = await patchR.json();
+  if (Array.isArray(result) && result.length === 0) {
+    const postR = await fetch(`${SUPABASE_URL}/rest/v1/roadmap_state`, {
+      method: 'POST',
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ id: ROW_ID, data: data })
+    });
+    if (!postR.ok) throw new Error(`Insert failed: ${postR.status}`);
+  }
+}
+async function loadState() {
+  setSyncStatus('syncing', 'Loading');
+  try {
+    const loaded = await supabaseGet();
+    if (loaded && Object.keys(loaded).length > 0) {
+      state = { ...state, ...loaded };
+      if (!state.certs) state.certs = DEFAULT_CERTS.map(c => ({...c}));
+      if (!state.apps) state.apps = DEFAULT_APPS.map(a => ({...a}));
+      if (!state.design) state.design = DEFAULT_DESIGN.map(d => ({...d}));
+      if (!state.sessions) state.sessions = [];
+    }
+    setSyncStatus('ok', 'Synced');
+  } catch (e) {
+    console.error(e);
+    setSyncStatus('error', 'Offline');
+    showToast('Could not load', true);
+  }
+}
+async function saveState() {
+  state.updatedAt = new Date().toISOString();
+  setSyncStatus('syncing', 'Saving');
+  try {
+    await supabaseSet(state);
+    setSyncStatus('ok', 'Synced');
+  } catch (e) {
+    console.error(e);
+    setSyncStatus('error', 'Save failed');
+    showToast('Save failed', true);
+  }
+}
+function debouncedSave() {
+  if (saveTimer) clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveState, 600);
+}
+function setSyncStatus(s, label) {
+  const dot = document.getElementById('sync-dot');
+  const text = document.getElementById('sync-text');
+  if (!dot || !text) return;
+  dot.className = 'sync-dot' + (s === 'syncing' ? ' syncing' : s === 'error' ? ' error' : '');
+  text.textContent = label;
+}
+async function resetState() {
+  if (!confirm('Reset all progress?')) return;
+  state = {
+    version: 2,
+    certs: DEFAULT_CERTS.map(c => ({...c})),
+    apps: DEFAULT_APPS.map(a => ({...a})),
+    design: DEFAULT_DESIGN.map(d => ({...d})),
+    sessions: [],
+    startDate: '2026-04-25',
+    coachOutput: null,
+    coachTimestamp: null,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  };
+  await saveState();
+  expandedItem = null;
+  render();
+  showToast('Reset complete');
+}
+function fmtDateShort(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso + (iso.length === 10 ? 'T00:00:00' : ''));
+  return `${String(d.getDate()).padStart(2,'0')}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getFullYear()).slice(-2)}`;
+}
+function todayISO() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function daysBetween(d1, d2) {
+  const a = new Date(d1 + 'T00:00:00');
+  const b = new Date(d2 + 'T00:00:00');
+  return Math.round((b - a) / 86400000);
+}
+function addDays(iso, days) {
+  const d = new Date(iso + 'T00:00:00');
+  d.setDate(d.getDate() + Math.ceil(days));
+  return d.toISOString().slice(0, 10);
+}
+function findItem(id) {
+  return state.certs.find(c => c.id === id) || state.apps.find(a => a.id === id) || state.design.find(d => d.id === id);
+}
+function findItemType(id) {
+  if (state.certs.find(c => c.id === id)) return 'cert';
+  if (state.apps.find(a => a.id === id)) return 'app';
+  if (state.design.find(d => d.id === id)) return 'design';
+  return null;
+}
+function getWeakestTrack() {
+  // Compare LinuC 101, LinuC 102, AI Practitioner by % complete (smallest wins)
+  const candidates = ['linuc-101', 'linuc-102', 'ai-prac']
+    .map(id => state.certs.find(c => c.id === id))
+    .filter(c => c && c.status !== 'passed');
+  if (candidates.length === 0) return null;
+  candidates.sort((a, b) => (a.hoursLogged / a.hoursTarget) - (b.hoursLogged / b.hoursTarget));
+  return candidates[0];
+}
+function getAllTrackables() {
+  return [
+    ...state.certs.map(c => ({...c, _type: 'cert', _label: c.name})),
+    ...state.apps.map(a => ({...a, _type: 'app', _label: `App ${a.number}: ${a.name}`})),
+    ...state.design.map(d => ({...d, _type: 'design', _label: d.name}))
+  ];
+}
+function getNextExam() {
+  return state.certs.filter(c => c.status !== 'passed' && c.kind === 'cert').sort((a, b) => new Date(a.targetDate) - new Date(b.targetDate))[0];
+}
+function getCurrentPhase() {
+  const today = todayISO();
+  if (today < '2026-07-01') return { num: '01', desc: 'AI Practitioner + LinuC 101 + SwiftUI' };
+  if (today < '2026-10-01') return { num: '02', desc: 'LinuC 102 + SwiftUI' };
+  if (today < '2027-01-01') return { num: '03', desc: 'Finish SwiftUI + App 1' };
+  if (today < '2027-04-01') return { num: '04', desc: 'Apps 1-2 + AI integration' };
+  if (today < '2027-07-01') return { num: '05', desc: 'Apps 3-4 + visionOS' };
+  return { num: '06', desc: 'Job hunt' };
+}
+function getStreak() {
+  if (state.sessions.length === 0) return 0;
+  const dates = [...new Set(state.sessions.map(s => s.date))].sort().reverse();
+  const today = todayISO();
+  const yest = addDays(today, -1);
+  if (dates[0] !== today && dates[0] !== yest) return 0;
+  let streak = 1; let prev = dates[0];
+  for (let i = 1; i < dates.length; i++) {
+    if (daysBetween(dates[i], prev) === 1) { streak++; prev = dates[i]; } else break;
+  }
+  return streak;
+}
+function getThisWeekHours() {
+  const today = new Date();
+  const dow = today.getDay();
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1));
+  monday.setHours(0, 0, 0, 0);
+  return state.sessions.filter(s => new Date(s.date + 'T00:00:00') >= monday).reduce((sum, s) => sum + s.hours, 0);
+}
+function getTotalHours() { return state.sessions.reduce((sum, s) => sum + s.hours, 0); }
+function getMonthHours() {
+  const now = new Date();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  return state.sessions.filter(s => new Date(s.date + 'T00:00:00') >= monthStart).reduce((sum, s) => sum + s.hours, 0);
+}
+function showToast(msg, error = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (error ? ' error' : '');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+async function logSession(targetId, hours) {
+  if (!hours || hours <= 0) return;
+  state.sessions.push({ date: todayISO(), hours: parseFloat(hours), targetId, timestamp: new Date().toISOString() });
+  const item = findItem(targetId);
+  if (item) {
+    item.hoursLogged = parseFloat((item.hoursLogged + parseFloat(hours)).toFixed(2));
+    if (item.status === 'not-started') item.status = 'in-progress';
+  }
+  await saveState();
+  showToast(`+${hours}h logged`);
+  render();
+}
+async function setPassed(itemId, passed) {
+  const item = findItem(itemId);
+  if (!item) return;
+  if (passed) {
+    item.status = 'passed';
+    item.completedDate = todayISO();
+    showToast(`${item.short || item.name} complete`);
+  } else {
+    item.status = item.hoursLogged > 0 ? 'in-progress' : 'not-started';
+    item.completedDate = null;
+  }
+  await saveState();
+  render();
+}
+function updateField(itemId, field, value) {
+  const item = findItem(itemId);
+  if (!item) return;
+  item[field] = value;
+  debouncedSave();
+}
+function updateFieldImmediate(itemId, field, value) {
+  const item = findItem(itemId);
+  if (!item) return;
+  item[field] = value;
+  saveState().then(() => render());
+}
+async function addCustomItem(bucket) {
+  const defaults = {
+    cert: { id: 'custom-' + Date.now(), name: 'New Cert', short: 'New', targetDate: todayISO(), hoursTarget: 40, hoursLogged: 0, status: 'not-started', cost: 0, notes: '', completedDate: null, kind: 'cert' },
+    app: { id: 'custom-app-' + Date.now(), name: 'New App', number: state.apps.length + 1, description: '', hoursTarget: 30, hoursLogged: 0, status: 'not-started', githubUrl: '', appStoreUrl: '', notes: '', completedDate: null, plannedStart: todayISO(), hasAI: false },
+    design: { id: 'custom-design-' + Date.now(), name: 'New Design Task', description: '', hoursTarget: 2, hoursLogged: 0, status: 'not-started', notes: '' }
+  };
+  const key = bucket === 'cert' ? 'certs' : bucket === 'app' ? 'apps' : 'design';
+  state[key].push(defaults[bucket]);
+  await saveState();
+  expandedItem = defaults[bucket].id;
+  render();
+}
+async function deleteItem(itemId) {
+  if (!confirm('Delete permanently?')) return;
+  const type = findItemType(itemId);
+  if (type === 'cert') state.certs = state.certs.filter(c => c.id !== itemId);
+  if (type === 'app') state.apps = state.apps.filter(a => a.id !== itemId);
+  if (type === 'design') state.design = state.design.filter(d => d.id !== itemId);
+  state.sessions = state.sessions.filter(s => s.targetId !== itemId);
+  expandedItem = null;
+  await saveState();
+  render();
+  showToast('Deleted');
+}
+//============================================================
+// AI COACH
+//============================================================
+function buildCoachContext() {
+  const today = todayISO();
+  const last7Start = addDays(today, -7);
+  const recentSessions = state.sessions.filter(s => s.date >= last7Start && s.date <= today);
+  const byDay = {};
+  for (let i = 6; i >= 0; i--) {
+    const d = addDays(today, -i);
+    byDay[d] = recentSessions.filter(s => s.date === d);
+  }
+  const byTrack = {};
+  recentSessions.forEach(s => {
+    const item = findItem(s.targetId);
+    const name = item ? (item.short || item.name) : s.targetId;
+    byTrack[name] = (byTrack[name] || 0) + s.hours;
+  });
+  const next = getNextExam();
+  const daysToExam = next ? daysBetween(today, next.targetDate) : null;
+  const examProgress = next ? `${next.hoursLogged.toFixed(1)}/${next.hoursTarget}h` : 'n/a';
+  const phase = getCurrentPhase();
+  const streak = getStreak();
+  const weekTotal = Object.values(byTrack).reduce((a,b) => a+b, 0);
+  const dayOfWeek = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+  const swiftDays = Object.keys(byDay).filter(d => byDay[d].some(s => s.targetId === '100-days-swiftui')).length;
+  const allItems = getAllTrackables().filter(t => t.status !== 'passed');
+  const itemSummary = allItems.map(i => `${i._label}: ${i.hoursLogged.toFixed(1)}/${i.hoursTarget}h, status=${i.status}${i.targetDate ? `, target=${i.targetDate}` : ''}`).join('\n');
+  const dailyLog = Object.entries(byDay).map(([d, sess]) => {
+    const total = sess.reduce((sum, s) => sum + s.hours, 0);
+    const tracks = sess.map(s => {
+      const it = findItem(s.targetId);
+      return `${it ? (it.short || it.name) : s.targetId} (${s.hours}h)`;
+    }).join(', ');
+    return `${d} (${new Date(d+'T00:00:00').toLocaleDateString('en-US',{weekday:'short'})}): ${total.toFixed(1)}h${tracks ? ' — ' + tracks : ' — nothing'}`;
+  }).join('\n');
+  return { today, dayOfWeek, phase, streak, weekTotal, dailyLog, itemSummary, next, daysToExam, examProgress, swiftDays };
+}
+async function askCoach() {
+  if (coachLoading) return;
+  coachLoading = true;
+  const outputEl = document.getElementById('ai-coach-output');
+  const btn = document.getElementById('ai-coach-btn');
+  const metaEl = document.getElementById('ai-coach-meta');
+  if (btn) btn.disabled = true;
+  if (outputEl) {
+    outputEl.style.display = 'block';
+    outputEl.textContent = '';
+    outputEl.classList.add('ai-typing');
+  }
+  if (metaEl) metaEl.textContent = 'Claude is thinking...';
+  const ctx = buildCoachContext();
+  const systemPrompt = `You are a no-bullshit career coach for a 24-year-old Tokyo-based learner named Anthony who is following a locked 18-month plan to become an iOS/visionOS engineer with AI integration skills. His target: mid-level iOS role at Mercari/LINE/PayPay by Oct 2027, ¥6-8M. Apple Japan is the 2030-31 target.
+The plan:
+- AWS AI Practitioner exam: end of June 2026
+- LinuC 101 exam: end of June 2026
+- LinuC 102 exam: mid-September 2026
+- 100 Days of SwiftUI (Paul Hudson): finish by Dec 2026, 1 hour daily non-negotiable
+- Then 4 App Store apps (utility, AI reader, polished AI, visionOS) through July 2027
+- Job hunt Aug-Oct 2027
+Study rule: SwiftUI daily at protected time. Weekday certs: MWF=LinuC, TuTh=AI Practitioner. Saturday=weakest track 2hr. Sunday=off.
+He burns out easily. He prefers efficiency over volume. "Never two bad days in a row" is a core actualOS principle.
+YOUR JOB: Look at his last 7 days of data and give him an honest, specific, short (3-5 sentences) response. Call out patterns — good or bad. No generic motivation. No "keep going!" platitudes. If he's slipping, say so. If a cert is falling behind, name it with numbers. If he's crushing it, call it out specifically. Write like a smart friend who's seen his data — not a coach script. Address him as "you", never "Anthony". Be warm but direct.
+Format: one paragraph, no lists, no headers, no emoji.`;
+  const userMessage = `Today: ${ctx.today} (${ctx.dayOfWeek})
+Phase: ${ctx.phase.num} - ${ctx.phase.desc}
+Current streak: ${ctx.streak} days
+This week total: ${ctx.weekTotal.toFixed(1)}h
+SwiftUI days this week: ${ctx.swiftDays}/7
+Next exam: ${ctx.next ? `${ctx.next.short} in ${ctx.daysToExam} days, ${ctx.examProgress}` : 'all passed'}
+Last 7 days:
+${ctx.dailyLog}
+All active items:
+${ctx.itemSummary}
+Give me your honest read.`;
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 400,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userMessage }]
+      })
+    });
+    if (!response.ok) throw new Error(`API returned ${response.status}`);
+    const data = await response.json();
+    const text = data.content.filter(c => c.type === 'text').map(c => c.text).join('\n').trim();
+    if (outputEl) {
+      outputEl.classList.remove('ai-typing');
+      outputEl.textContent = text;
+    }
+    state.coachOutput = text;
+    state.coachTimestamp = new Date().toISOString();
+    await saveState();
+    if (metaEl) metaEl.textContent = `Generated · ${new Date().toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'})}`;
+  } catch (err) {
+    console.error(err);
+    if (outputEl) {
+      outputEl.classList.remove('ai-typing');
+      outputEl.textContent = 'Could not reach Claude. Check your connection or try again in a minute.';
+    }
+    if (metaEl) metaEl.textContent = 'Error — try again';
+    showToast('Coach unavailable', true);
+  } finally {
+    coachLoading = false;
+    if (btn) btn.disabled = false;
+  }
+}
+//============================================================
+// CALENDAR
+//============================================================
+function getWeekDays() {
+  const today = new Date();
+  const dow = today.getDay();
+  const daysFromMonday = dow === 0 ? 6 : dow - 1;
+  const monday = new Date(today);
+  monday.setHours(0, 0, 0, 0);
+  monday.setDate(today.getDate() - daysFromMonday);
+  const days = [];
+  const labels = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(monday);
+    d.setDate(monday.getDate() + i);
+    const iso = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    const dayHours = state.sessions.filter(s => s.date === iso).reduce((sum, s) => sum + s.hours, 0);
+    const isToday = iso === todayISO();
+    const isFuture = iso > todayISO();
+    const jsDow = d.getDay();
+    days.push({ iso, label: labels[i], dayNum: d.getDate(), hours: dayHours, isToday, isFuture, jsDow });
+  }
+  return days;
+}
+function getDayPlan(jsDow) {
+  const plan = DAY_PLAN[jsDow];
+  if (!plan) return null;
+  if (plan.rest) return plan;
+  // Resolve "weakest" track
+  const weakest = getWeakestTrack();
+  const resolved = {
+    ...plan,
+    blocks: plan.blocks.map(b => {
+      if (b.track === 'weakest') {
+        return { ...b, track: weakest ? weakest.id : null, resolvedName: weakest ? (weakest.short || weakest.name) : 'Weakest track' };
+      }
+      const item = findItem(b.track);
+      return { ...b, resolvedName: item ? (item.short || item.name) : b.track };
+    })
+  };
+  return resolved;
+}
+function openDayModal(iso, jsDow) {
+  const plan = getDayPlan(jsDow);
+  const sessions = state.sessions.filter(s => s.date === iso);
+  const d = new Date(iso + 'T00:00:00');
+  const dayName = d.toLocaleDateString('en-US', { weekday: 'long' });
+  const dayFull = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+  const isPast = iso < todayISO();
+  const isToday = iso === todayISO();
+  let contentHtml = `
+    <div class="day-modal-header">
+      <div class="day-modal-title">${dayName}</div>
+      <div class="day-modal-date">${dayFull}</div>
+    </div>
+  `;
+  // Claude Suggests block
+  contentHtml += `<div class="day-modal-section">`;
+  contentHtml += `
+    <div class="claude-card">
+      <div class="claude-inner">
+        <div class="claude-header">
+          <div class="claude-mark">✧</div>
+          <div class="claude-title">Claude Suggests</div>
+        </div>
+  `;
+  if (plan.rest) {
+    contentHtml += `
+      <div class="claude-block rest">
+        <div class="claude-block-time">All day</div>
+        <div class="claude-block-body">
+          <div class="claude-block-track">Rest day</div>
+          <div class="claude-block-meta">Weekly review in actualOS, then actually rest</div>
+        </div>
+      </div>
+    `;
+  } else {
+    plan.blocks.forEach(b => {
+      contentHtml += `
+        <div class="claude-block">
+          <div class="claude-block-time">${b.time}</div>
+          <div class="claude-block-body">
+            <div class="claude-block-track">${b.resolvedName} · ${b.mins}min</div>
+            <div class="claude-block-meta">${b.label}</div>
+          </div>
+        </div>
+      `;
+    });
+  }
+  contentHtml += `
+        <div class="claude-footnote">Single-focus rule: when studying one track, close the others. Flex freely — this is a suggestion, not a schedule.</div>
+      </div>
+    </div>
+  </div>`;
+  // Actual sessions (past/today only)
+  if (!plan.rest && (isPast || isToday)) {
+    contentHtml += `<div class="day-modal-section">`;
+    contentHtml += `<div class="day-modal-label">What ${isToday ? 'happened so far' : 'actually happened'}</div>`;
+    if (sessions.length === 0) {
+      contentHtml += `<div class="session-miss">No sessions logged</div>`;
+    } else {
+      const total = sessions.reduce((sum, s) => sum + s.hours, 0);
+      sessions.forEach(s => {
+        const item = findItem(s.targetId);
+        const name = item ? (item.short || item.name) : s.targetId;
+        const time = new Date(s.timestamp).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        contentHtml += `
+          <div class="session-row">
+            <div>
+              <div class="session-track">${name}</div>
+              <div class="session-time">${time}</div>
+            </div>
+            <div class="session-hours">${s.hours}h</div>
+          </div>
+        `;
+      });
+      // Check against plan
+      const swiftuiHit = sessions.some(s => s.targetId === '100-days-swiftui');
+      if (swiftuiHit) {
+        contentHtml += `<div class="session-check">✓ SwiftUI slot kept</div>`;
+      } else if (isPast) {
+        contentHtml += `<div class="session-miss">⚠ SwiftUI slot missed</div>`;
+      }
+      contentHtml += `<div class="session-check" style="margin-left:6px;">Total ${total.toFixed(1)}h</div>`;
+    }
+    contentHtml += `</div>`;
+  }
+  document.getElementById('day-modal-content').innerHTML = contentHtml;
+  document.getElementById('day-modal').classList.add('show');
+}
+function closeDayModal() {
+  document.getElementById('day-modal').classList.remove('show');
+}
+//============================================================
+// RENDER: NOW
+//============================================================
+function renderNow() {
+  const next = getNextExam();
+  const phase = getCurrentPhase();
+  const streak = getStreak();
+  const weekHrs = getThisWeekHours();
+  const todayLogged = state.sessions.filter(s => s.date === todayISO()).reduce((sum, s) => sum + s.hours, 0);
+  let heroHtml = '';
+  if (next) {
+    const days = daysBetween(todayISO(), next.targetDate);
+    const dayLabel = days >= 0 ? `Days until ${next.short.toUpperCase()}` : `Days past ${next.short.toUpperCase()}`;
+    const valClass = days < 0 ? 'warning' : '';
+    heroHtml = `
+      <div class="hero">
+        <div class="hero-top">
+          <div class="hero-eyebrow">Phase ${phase.num} · ${phase.desc}</div>
+          <div class="hero-tag">Active</div>
+        </div>
+        <div class="hero-number ${valClass}">${days < 0 ? '+' + Math.abs(days) : days}</div>
+        <div class="hero-label">${dayLabel} · target ${fmtDateShort(next.targetDate)}</div>
+        <div class="hero-divider"></div>
+        <div class="hero-data">
+          <div class="data-cell"><div class="data-label">Today</div><div class="data-value mono">${todayLogged.toFixed(1)}<span style="font-size:11px;color:var(--text-3);margin-left:3px;">h</span></div></div>
+          <div class="data-cell"><div class="data-label">Week</div><div class="data-value mono">${weekHrs.toFixed(1)}<span style="font-size:11px;color:var(--text-3);margin-left:3px;">h</span></div></div>
+          <div class="data-cell"><div class="data-label">Streak</div><div class="data-value mono">${streak}<span style="font-size:11px;color:var(--text-3);margin-left:3px;">d</span></div></div>
+        </div>
+      </div>
+    `;
+  } else {
+    heroHtml = `<div class="hero" style="text-align:center;"><div class="hero-eyebrow">All exams done</div><div class="hero-number">✓</div><div class="hero-label">Ship mode</div></div>`;
+  }
+  // Weekly calendar with plan hints
+  const weekDays = getWeekDays();
+  const weekStart = weekDays[0].iso;
+  const weekEnd = weekDays[6].iso;
+  const calHtml = `
+    <div class="cal-week">
+      <div class="cal-header">
+        <div class="cal-title">This Week · tap any day</div>
+        <div class="cal-week-label mono">${fmtDateShort(weekStart)} — ${fmtDateShort(weekEnd)}</div>
+      </div>
+      <div class="cal-days">
+        ${weekDays.map(d => {
+          const plan = DAY_PLAN[d.jsDow];
+          let planShort = '';
+          if (plan.rest) planShort = 'Rest';
+          else if (d.jsDow === 6) planShort = 'Sat+';
+          else if ([1,3,5].includes(d.jsDow)) planShort = 'LinuC';
+          else if ([2,4].includes(d.jsDow)) planShort = 'AI Pr.';
+          return `
+            <div class="cal-day ${d.hours > 0 ? 'has-session' : ''} ${d.isToday ? 'today' : ''} ${d.isFuture ? 'future' : ''} ${plan.rest ? 'rest-day' : ''}" data-day-iso="${d.iso}" data-day-dow="${d.jsDow}">
+              <div class="cal-day-label">${d.label}</div>
+              <div class="cal-day-date">${d.dayNum}</div>
+              <div class="cal-day-plan">${d.hours > 0 ? d.hours.toFixed(1) + 'h' : planShort}</div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+  // AI Coach
+  const hasCoach = state.coachOutput && state.coachTimestamp;
+  const coachAge = hasCoach ? Math.round((Date.now() - new Date(state.coachTimestamp).getTime()) / 60000) : null;
+  const coachMeta = hasCoach ? (coachAge < 60 ? `${coachAge}m ago` : coachAge < 1440 ? `${Math.round(coachAge/60)}h ago` : `${Math.round(coachAge/1440)}d ago`) : '';
+  const coachHtml = `
+    <div class="section">
+      <div class="ai-coach">
+        <div class="ai-coach-inner">
+          <div class="ai-coach-label">AI Coach · Claude</div>
+          <button class="ai-coach-button" id="ai-coach-btn">
+            <div class="ai-coach-icon">✧</div>
+            <div style="flex:1;">
+              <div>${hasCoach ? 'Ask for another read' : 'Get a read on your week'}</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;font-weight:400;letter-spacing:0.02em;text-transform:none;">Looks at your last 7 days and calls it straight</div>
+            </div>
+          </button>
+          <div class="ai-coach-output" id="ai-coach-output" style="display:${hasCoach ? 'block' : 'none'};">${hasCoach ? state.coachOutput : ''}</div>
+          <div class="ai-coach-meta" id="ai-coach-meta">${hasCoach ? 'Last read · ' + coachMeta : ''}</div>
+        </div>
+      </div>
+    </div>
+  `;
+  const targets = getAllTrackables().filter(t => t.status !== 'passed');
+  const quickLogHtml = targets.length > 0 ? `
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Quick Log</div>
+        <div class="section-meta">${todayLogged.toFixed(1)}h today</div>
+      </div>
+      <div class="card">
+        <label class="label">Subject</label>
+        <select class="select" id="ql-target">${targets.map(t => `<option value="${t.id}">${t._label}</option>`).join('')}</select>
+        <label class="label">Duration</label>
+        <div class="chip-row">
+          <button class="chip" data-hours="0.25">15m</button>
+          <button class="chip" data-hours="0.5">30m</button>
+          <button class="chip" data-hours="1">1h</button>
+          <button class="chip" data-hours="1.5">1.5h</button>
+          <button class="chip" data-hours="2">2h</button>
+          <button class="chip" data-hours="3">3h</button>
+        </div>
+        <input type="number" class="input mono" id="ql-custom" placeholder="Custom hours" step="0.25" min="0" max="12" style="margin-top:10px;">
+        <button class="btn" id="ql-submit" style="width:100%;margin-top:14px;">Log session</button>
+      </div>
+    </div>
+  ` : '';
+  const todayFocus = `
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Today</div>
+        <div class="section-meta">${new Date().toLocaleDateString('en-US', {weekday:'long', month:'short', day:'numeric'})}</div>
+      </div>
+      <div class="today-card">
+        <div class="today-card-icon">Focus</div>
+        <div class="today-card-text">${getTodayGuidance(todayLogged)}</div>
+      </div>
+    </div>
+  `;
+  const activeCerts = state.certs.filter(c => c.status !== 'passed').slice(0, 4);
+  const activeApps = state.apps.filter(a => a.status === 'in-progress');
+  const snapshot = `
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Active Tracks</div>
+        <div class="section-meta">tap tabs for detail</div>
+      </div>
+      <div class="card" style="padding:18px;">
+        ${activeCerts.map(c => {
+          const pct = Math.min(100, (c.hoursLogged / c.hoursTarget) * 100);
+          const kindBadge = c.kind === 'course' ? '<span class="badge course">Course</span>' : '<span class="badge cert">Cert</span>';
+          return `
+            <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+                <div style="font-size:13px;font-weight:500;color:var(--text-1);">${c.short || c.name}${kindBadge}</div>
+                <div class="mono" style="font-size:11px;color:var(--text-3);">${c.hoursLogged.toFixed(1)}/${c.hoursTarget}h</div>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+            </div>
+          `;
+        }).join('')}
+        ${activeApps.map(a => {
+          const pct = Math.min(100, (a.hoursLogged / a.hoursTarget) * 100);
+          return `
+            <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+                <div style="font-size:13px;font-weight:500;color:var(--text-1);">App ${a.number}: ${a.name}<span class="badge app">App</span></div>
+                <div class="mono" style="font-size:11px;color:var(--text-3);">${a.hoursLogged.toFixed(1)}/${a.hoursTarget}h</div>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+  return heroHtml + calHtml + coachHtml + quickLogHtml + todayFocus + snapshot;
+}
+function getTodayGuidance(todayLogged) {
+  const dow = new Date().getDay();
+  const today = todayISO();
+  if (dow === 0) return "Sunday. Rest day — do your weekly review in actualOS if you feel like it, then actually rest.";
+  const swiftToday = state.sessions.find(s => s.date === today && s.targetId === '100-days-swiftui');
+  if (!swiftToday) return "SwiftUI first — 1 hour of 100 Days. Protected slot. Once that's done, pick up whichever cert matches your energy.";
+  if (todayLogged >= 2) return `${todayLogged.toFixed(1)}h in the bank already. Strong day. Rest is earned.`;
+  if (todayLogged > 0 && todayLogged < 2) return `${todayLogged.toFixed(1)}h done. If there's energy left for cert work, take it. If not, you kept the streak alive.`;
+  if (dow === 6) return "Saturday. Two-hour slot on whichever track feels furthest behind.";
+  const certName = [1,3,5].includes(dow) ? 'LinuC 101' : 'AI Practitioner';
+  return `Weekday. SwiftUI hour protected. Today leans ${certName} — but flex if energy says otherwise.`;
+}
+function renderItem(item, type) {
+  const isExpanded = expandedItem === item.id;
+  const pct = Math.min(100, (item.hoursLogged / item.hoursTarget) * 100);
+  const statusClass = item.status === 'passed' ? 'passed' : item.hoursLogged > 0 ? 'in-progress' : '';
+  let num, title, meta;
+  if (type === 'cert') {
+    num = item.kind === 'course' ? 'CR' : 'CT';
+    title = item.name;
+    meta = `${item.hoursLogged.toFixed(1)} / ${item.hoursTarget}h · target ${fmtDateShort(item.targetDate)}`;
+  } else if (type === 'app') {
+    num = `A${item.number}`;
+    title = item.name;
+    meta = `${item.hoursLogged.toFixed(1)} / ${item.hoursTarget}h · ${(item.description || '').slice(0, 60)}${item.description && item.description.length > 60 ? '…' : ''}`;
+  } else {
+    num = '·';
+    title = item.name;
+    meta = `${item.hoursLogged.toFixed(1)} / ${item.hoursTarget}h · ${(item.description || '').slice(0, 60)}`;
+  }
+  let detailHtml = '';
+  if (isExpanded) {
+    const isAppType = type === 'app';
+    const isCertType = type === 'cert';
+    let fields = '';
+    fields += `
+      <div class="detail-field" style="grid-column: 1 / -1;">
+        <div class="detail-field-label">Name</div>
+        <div class="detail-field-value"><input type="text" value="${item.name || ''}" data-field="name" data-id="${item.id}"></div>
+      </div>
+    `;
+    if (isCertType) {
+      fields += `
+        <div class="detail-field">
+          <div class="detail-field-label">Short Name</div>
+          <div class="detail-field-value"><input type="text" value="${item.short || ''}" data-field="short" data-id="${item.id}"></div>
+        </div>
+        <div class="detail-field">
+          <div class="detail-field-label">Target Date</div>
+          <div class="detail-field-value"><input type="date" class="mono" value="${item.targetDate || ''}" data-field="targetDate" data-id="${item.id}" data-immediate="1"></div>
+        </div>
+      `;
+    }
+    if (isAppType) {
+      fields += `
+        <div class="detail-field">
+          <div class="detail-field-label">Number</div>
+          <div class="detail-field-value"><input type="number" class="mono" value="${item.number || 1}" data-field="number" data-id="${item.id}" min="1"></div>
+        </div>
+        <div class="detail-field">
+          <div class="detail-field-label">Planned Start</div>
+          <div class="detail-field-value"><input type="date" class="mono" value="${item.plannedStart || ''}" data-field="plannedStart" data-id="${item.id}"></div>
+        </div>
+      `;
+    }
+    fields += `
+      <div class="detail-field">
+        <div class="detail-field-label">Hours Logged</div>
+        <div class="detail-field-value"><input type="number" class="mono" step="0.5" value="${item.hoursLogged || 0}" data-field="hoursLogged" data-id="${item.id}" min="0"></div>
+      </div>
+      <div class="detail-field">
+        <div class="detail-field-label">Hours Target</div>
+        <div class="detail-field-value"><input type="number" class="mono" value="${item.hoursTarget || 0}" data-field="hoursTarget" data-id="${item.id}" min="0"></div>
+      </div>
+    `;
+    if (isCertType && item.kind !== 'course') {
+      fields += `
+        <div class="detail-field">
+          <div class="detail-field-label">Cost (¥)</div>
+          <div class="detail-field-value"><input type="number" class="mono" value="${item.cost || 0}" data-field="cost" data-id="${item.id}" min="0"></div>
+        </div>
+      `;
+    }
+    if (isAppType || type === 'design') {
+      fields += `
+        <div class="detail-field" style="grid-column: 1 / -1;">
+          <div class="detail-field-label">Description</div>
+          <div class="detail-field-value"><input type="text" value="${item.description || ''}" data-field="description" data-id="${item.id}"></div>
+        </div>
+      `;
+    }
+    const completedNote = item.completedDate ? `<div style="font-size:11px;color:var(--success);margin-bottom:14px;letter-spacing:0.04em;text-transform:uppercase;">✓ Completed ${fmtDateShort(item.completedDate)}</div>` : '';
+    let extraFields = '';
+    if (isAppType) {
+      extraFields += `
+        <label class="label">GitHub URL</label>
+        <input type="url" class="input mono" placeholder="https://github.com/..." value="${item.githubUrl || ''}" data-field="githubUrl" data-id="${item.id}" style="font-size:12px;">
+        <label class="label">App Store URL</label>
+        <input type="url" class="input mono" placeholder="https://apps.apple.com/..." value="${item.appStoreUrl || ''}" data-field="appStoreUrl" data-id="${item.id}" style="font-size:12px;">
+      `;
+    }
+    const completeBtn = item.status === 'passed'
+      ? `<button class="btn btn-secondary" data-action="unpass" data-id="${item.id}">Mark not yet</button>`
+      : `<button class="btn btn-success" data-action="pass" data-id="${item.id}">${isCertType && item.kind !== 'course' ? 'Mark passed' : isAppType ? 'Mark shipped' : 'Mark complete'}</button>`;
+    detailHtml = `
+      <div class="item-detail">
+        ${completedNote}
+        <div class="detail-grid">${fields}</div>
+        ${extraFields}
+        <label class="label">Notes</label>
+        <textarea class="textarea" placeholder="Anything to remember..." data-field="notes" data-id="${item.id}">${item.notes || ''}</textarea>
+        <div class="btn-row">
+          ${completeBtn}
+          <button class="btn btn-danger" data-action="delete" data-id="${item.id}">Delete</button>
+        </div>
+      </div>
+    `;
+  }
+  const kindBadge = type === 'cert' && item.kind === 'course' ? '<span class="badge course">Course</span>' :
+                    type === 'cert' ? '<span class="badge cert">Cert</span>' :
+                    type === 'app' ? '<span class="badge app">App</span>' :
+                    '<span class="badge side">Side</span>';
+  return `
+    <div class="item ${isExpanded ? 'expanded' : ''} ${item.status === 'passed' ? 'passed' : ''}">
+      <div class="item-row" data-toggle="${item.id}">
+        <span class="item-num mono">${num}</span>
+        <span class="item-status ${statusClass}"></span>
+        <div class="item-body">
+          <div class="item-title">${title}${kindBadge}</div>
+          <div class="item-meta mono">${meta}</div>
+          <div class="bar-track"><div class="bar-fill ${item.status === 'passed' ? 'success' : ''}" style="width:${pct}%"></div></div>
+        </div>
+        <div class="item-progress-text mono">${pct.toFixed(0)}%</div>
+        <span class="item-arrow"></span>
+      </div>
+      ${detailHtml}
+    </div>
+  `;
+}
+function renderCerts() {
+  const certs = state.certs.filter(c => c.kind !== 'course').sort((a, b) => new Date(a.targetDate) - new Date(b.targetDate));
+  const passed = certs.filter(c => c.status === 'passed').length;
+  let html = `
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Certifications</div>
+        <div class="section-meta mono">${passed} / ${certs.length} passed</div>
+      </div>
+      <div class="phase-line"><span>Exam</span><span>Hours / Target</span></div>
+  `;
+  if (certs.length === 0) html += '<div class="empty">No certs yet.</div>';
+  certs.forEach(c => { html += renderItem(c, 'cert'); });
+  html += `<button class="btn-add" data-add="cert">+ Add cert</button></div>`;
+  return html;
+}
+function renderSwiftUI() {
+  const course = state.certs.find(c => c.id === '100-days-swiftui');
+  if (!course) return '<div class="empty">SwiftUI course missing. Reset to restore.</div>';
+  const swiftSessions = state.sessions.filter(s => s.targetId === '100-days-swiftui');
+  const daysStudied = [...new Set(swiftSessions.map(s => s.date))].length;
+  const lastSession = swiftSessions.sort((a,b) => b.date.localeCompare(a.date))[0];
+  const pct = Math.min(100, (course.hoursLogged / course.hoursTarget) * 100);
+  const today = new Date();
+  const days14 = [];
+  for (let i = 13; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    const iso = d.toISOString().slice(0, 10);
+    const dayHours = swiftSessions.filter(s => s.date === iso).reduce((sum, s) => sum + s.hours, 0);
+    days14.push({ iso, hours: dayHours, isToday: iso === todayISO() });
+  }
+  const dates = [...new Set(swiftSessions.map(s => s.date))].sort().reverse();
+  let swiftStreak = 0;
+  const todayStr = todayISO();
+  const yestStr = addDays(todayStr, -1);
+  if (dates[0] === todayStr || dates[0] === yestStr) {
+    swiftStreak = 1;
+    let prev = dates[0];
+    for (let i = 1; i < dates.length; i++) {
+      if (daysBetween(dates[i], prev) === 1) { swiftStreak++; prev = dates[i]; } else break;
+    }
+  }
+  return `
+    <div class="section">
+      <div class="hero" style="padding:32px 28px;">
+        <div class="hero-top">
+          <div class="hero-eyebrow">100 Days of SwiftUI</div>
+          <div class="hero-tag">Spine</div>
+        </div>
+        <div class="hero-number mono">${daysStudied}</div>
+        <div class="hero-label">days studied · streak ${swiftStreak} · ${course.hoursLogged.toFixed(1)}h total</div>
+        <div class="hero-divider"></div>
+        <div class="bar-track" style="height:4px;"><div class="bar-fill" style="width:${pct}%"></div></div>
+        <div style="display:flex;justify-content:space-between;margin-top:10px;">
+          <span class="mono" style="font-size:11px;color:var(--text-3);">${course.hoursLogged.toFixed(1)} / ${course.hoursTarget}h</span>
+          <span class="mono" style="font-size:11px;color:var(--text-3);">${pct.toFixed(0)}% · target ${fmtDateShort(course.targetDate)}</span>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Last 14 days</div>
+        <div class="section-meta">${lastSession ? `last ${fmtDateShort(lastSession.date)}` : 'no sessions'}</div>
+      </div>
+      <div class="card" style="padding:18px;">
+        <div class="week-strip" style="grid-template-columns:repeat(14, 1fr);gap:3px;">
+          ${days14.map(d => `<div class="day-cell ${d.hours > 0 ? 'has' : ''} ${d.isToday ? 'today' : ''}" style="aspect-ratio:1;padding:4px;"><div class="day-value mono" style="font-size:10px;">${d.hours > 0 ? d.hours.toFixed(1) : '·'}</div></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Details</div>
+        <div class="section-meta">edit freely</div>
+      </div>
+      ${renderItem(course, 'cert')}
+    </div>
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">The Rule</div>
+        <div class="section-meta">first 3 months</div>
+      </div>
+      <div class="today-card">
+        <div class="today-card-icon">Typing discipline</div>
+        <div class="today-card-text">Type every line Paul shows. No copy-paste. No AI-generated Swift. The syntax has to get into your fingers — that's the whole point of the first 3 months.</div>
+      </div>
+    </div>
+  `;
+}
+function renderApps() {
+  const apps = [...state.apps].sort((a, b) => a.number - b.number);
+  const shipped = apps.filter(a => a.status === 'passed').length;
+  let html = `
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">App Store Builds</div>
+        <div class="section-meta mono">${shipped} / ${apps.length} shipped</div>
+      </div>
+      <div class="phase-line"><span>Build</span><span>Hours / Target</span></div>
+  `;
+  if (apps.length === 0) html += '<div class="empty">No apps yet.</div>';
+  apps.forEach(a => { html += renderItem(a, 'app'); });
+  html += `<button class="btn-add" data-add="app">+ Add app</button></div>`;
+  return html;
+}
+function renderDesign() {
+  const items = state.design;
+  const done = items.filter(d => d.status === 'passed').length;
+  let html = `
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Design Sidetrack</div>
+        <div class="section-meta mono">${done} / ${items.length} done</div>
+      </div>
+      <div class="today-card" style="margin-bottom:14px;">
+        <div class="today-card-icon">Purpose</div>
+        <div class="today-card-text">Not a separate study track. Small investments in design fluency, applied as you ship apps. Taste plus Apple's design system beats custom design skill.</div>
+      </div>
+      <div class="phase-line"><span>Task</span><span>Hours</span></div>
+  `;
+  if (items.length === 0) html += '<div class="empty">No design tasks.</div>';
+  items.forEach(d => { html += renderItem(d, 'design'); });
+  html += `<button class="btn-add" data-add="design">+ Add task</button></div>`;
+  return html;
+}
+let cramState = { certId: null, hoursPerDay: 1, daysPerWeek: 5 };
+function renderCram() {
+  const certs = state.certs.filter(c => c.status !== 'passed');
+  if (!cramState.certId && certs.length > 0) cramState.certId = certs[0].id;
+  const certOptions = certs.map(c => `<option value="${c.id}" ${c.id === cramState.certId ? 'selected' : ''}>${c.short || c.name}</option>`).join('');
+  const cert = state.certs.find(c => c.id === cramState.certId);
+  let resultHtml = '';
+  if (cert) {
+    const remaining = Math.max(0, cert.hoursTarget - cert.hoursLogged);
+    const hpw = cramState.hoursPerDay * cramState.daysPerWeek;
+    const weeksNeeded = remaining / hpw;
+    const daysNeeded = Math.ceil(weeksNeeded * 7);
+    const cramDate = addDays(todayISO(), daysNeeded);
+    const delta = daysBetween(cramDate, cert.targetDate);
+    const intensity = getIntensity(cramState.hoursPerDay, cramState.daysPerWeek);
+    let deltaHtml = '';
+    if (remaining === 0) deltaHtml = `<div class="cram-delta same">Already done</div>`;
+    else if (delta > 0) deltaHtml = `<div class="cram-delta faster">${delta} days early</div>`;
+    else if (delta < 0) deltaHtml = `<div class="cram-delta slower">${Math.abs(delta)} days late</div>`;
+    else deltaHtml = `<div class="cram-delta same">On schedule</div>`;
+    const dateStr = remaining === 0 ? 'TODAY' : fmtDateShort(cramDate);
+    const summary = remaining === 0 ? 'mark complete' : `${remaining.toFixed(1)}h remaining · ${hpw.toFixed(1)}h/wk · ${Math.ceil(weeksNeeded)}wk`;
+    const blockClass = `on-${intensity.level}`;
+    const blocks = intensity.level === 'sustainable' ? [blockClass, '', ''] :
+                   intensity.level === 'intense' ? [blockClass, blockClass, ''] : [blockClass, blockClass, blockClass];
+    resultHtml = `
+      <div class="cram-result">
+        <div class="cram-eyebrow">${cert.short || cert.name}</div>
+        <div class="cram-date mono">${dateStr}</div>
+        ${deltaHtml}
+        <div class="cram-summary mono">${summary}</div>
+        <div class="intensity">
+          <div class="intensity-row">
+            <span class="intensity-label">Intensity</span>
+            <span class="intensity-text ${intensity.level}">${intensity.label}</span>
+          </div>
+          <div class="intensity-blocks">
+            <div class="intensity-block ${blocks[0]}"></div>
+            <div class="intensity-block ${blocks[1]}"></div>
+            <div class="intensity-block ${blocks[2]}"></div>
+          </div>
+          <div class="intensity-note">${intensity.note}</div>
+        </div>
+      </div>
+    `;
+  }
+  return `
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Cram Mode</div>
+        <div class="section-meta">if you locked in</div>
+      </div>
+      <div class="card">
+        <label class="label">Item</label>
+        <select class="select" id="cram-cert">${certOptions}</select>
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Hours / day</span>
+            <span class="slider-value mono" id="cram-hpd-val">${cramState.hoursPerDay.toFixed(1)}h</span>
+          </div>
+          <input type="range" id="cram-hpd" min="0.5" max="6" step="0.5" value="${cramState.hoursPerDay}">
+        </div>
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Days / week</span>
+            <span class="slider-value mono" id="cram-dpw-val">${cramState.daysPerWeek}</span>
+          </div>
+          <input type="range" id="cram-dpw" min="1" max="7" step="1" value="${cramState.daysPerWeek}">
+        </div>
+        ${resultHtml}
+      </div>
+    </div>
+  `;
+}
+function getIntensity(hpd, dpw) {
+  const hpw = hpd * dpw;
+  if (hpw <= 10 && dpw <= 6) return { level: 'sustainable', label: 'Sustainable', note: 'Hold this for months without burning out.' };
+  if (hpw <= 18 && !(hpd > 4 && dpw >= 6)) return { level: 'intense', label: 'Intense', note: 'Doable for ~6 weeks. Deload immediately after.' };
+  return { level: 'burnout', label: 'Burnout risk', note: 'Max 2 weeks at this pace. Honor sleep and gym.' };
+}
+//============================================================
+// STATS GRAPH
+//============================================================
+function trackColor(trackId, isDark) {
+  const palette = {
+    '100-days-swiftui': isDark ? '#5ec083' : '#2d8659',
+    'ai-prac': isDark ? '#ff7a3e' : '#e85d24',
+    'linuc-101': isDark ? '#b76dcd' : '#8e47a3',
+    'linuc-102': isDark ? '#d99441' : '#c97a14',
+    '_default': isDark ? '#9c9a92' : '#6b6864'
+  };
+  return palette[trackId] || palette._default;
+}
+function render30DayGraph() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+    (!document.documentElement.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const days = [];
+  for (let i = 29; i >= 0; i--) {
+    const iso = addDays(todayISO(), -i);
+    const sessionsOnDay = state.sessions.filter(s => s.date === iso);
+    const byTrack = {};
+    sessionsOnDay.forEach(s => {
+      byTrack[s.targetId] = (byTrack[s.targetId] || 0) + s.hours;
+    });
+    const total = sessionsOnDay.reduce((sum, s) => sum + s.hours, 0);
+    days.push({ iso, total, byTrack });
+  }
+  const maxH = Math.max(4, ...days.map(d => d.total));
+  const niceMax = Math.ceil(maxH);
+  const w = 600;
+  const h = 160;
+  const padL = 28;
+  const padR = 8;
+  const padT = 12;
+  const padB = 24;
+  const chartW = w - padL - padR;
+  const chartH = h - padT - padB;
+  const barW = chartW / 30;
+  const uniqueTracks = new Set();
+  state.sessions.forEach(s => uniqueTracks.add(s.targetId));
+  let bars = '';
+  days.forEach((d, i) => {
+    const x = padL + i * barW;
+    let yCursor = padT + chartH;
+    const entries = Object.entries(d.byTrack);
+    entries.forEach(([track, hrs]) => {
+      const barH = (hrs / niceMax) * chartH;
+      yCursor -= barH;
+      bars += `<rect class="graph-bar" x="${x + 1}" y="${yCursor}" width="${barW - 2}" height="${barH}" fill="${trackColor(track, isDark)}" rx="1"><title>${d.iso}: ${track} ${hrs}h</title></rect>`;
+    });
+  });
+  // Y gridlines
+  const lines = [];
+  const steps = 4;
+  for (let i = 0; i <= steps; i++) {
+    const y = padT + (chartH * i) / steps;
+    const val = niceMax * (1 - i / steps);
+    lines.push(`<line class="graph-hline" x1="${padL}" y1="${y}" x2="${w - padR}" y2="${y}"/>`);
+    lines.push(`<text class="graph-axis" x="${padL - 6}" y="${y + 3}" text-anchor="end">${val.toFixed(val < 1 ? 1 : 0)}</text>`);
+  }
+  // X labels (every 7 days)
+  const xLabels = [];
+  for (let i = 0; i < 30; i += 7) {
+    const x = padL + i * barW + barW / 2;
+    const d = new Date(days[i].iso + 'T00:00:00');
+    xLabels.push(`<text class="graph-axis" x="${x}" y="${h - 8}" text-anchor="middle">${d.getDate()}/${d.getMonth()+1}</text>`);
+  }
+  const legendItems = Array.from(uniqueTracks).map(tid => {
+    const item = findItem(tid);
+    if (!item) return '';
+    const name = item.short || item.name;
+    const color = trackColor(tid, isDark);
+    return `<span class="legend-item"><span class="legend-swatch" style="background:${color};"></span>${name}</span>`;
+  }).join('');
+  return `
+    <div class="graph-wrap">
+      <svg class="graph-svg" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+        ${lines.join('')}
+        ${bars}
+        ${xLabels.join('')}
+      </svg>
+      <div class="graph-label-row">
+        <span>30 days ago</span>
+        <span>today</span>
+      </div>
+      ${legendItems ? `<div class="graph-legend">${legendItems}</div>` : ''}
+    </div>
+  `;
+}
+function renderStats() {
+  const total = getTotalHours();
+  const week = getThisWeekHours();
+  const month = getMonthHours();
+  const streak = getStreak();
+  const sessions = state.sessions.length;
+  const today = new Date();
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    const iso = d.toISOString().slice(0, 10);
+    const dayHours = state.sessions.filter(s => s.date === iso).reduce((sum, s) => sum + s.hours, 0);
+    days.push({ iso, label: d.toLocaleDateString('en-US', { weekday: 'narrow' }), hours: dayHours, isToday: iso === todayISO() });
+  }
+  const trackBreakdown = {};
+  state.sessions.forEach(s => { trackBreakdown[s.targetId] = (trackBreakdown[s.targetId] || 0) + s.hours; });
+  const trackRows = Object.entries(trackBreakdown).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([id, hrs]) => {
+    const item = findItem(id);
+    if (!item) return '';
+    const typeLabel = findItemType(id);
+    return `
+      <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);">
+        <div>
+          <div style="font-size:13px;color:var(--text-1);">${item.short || item.name}</div>
+          <div class="mono" style="font-size:10px;color:var(--text-3);margin-top:2px;">${typeLabel.toUpperCase()}</div>
+        </div>
+        <div class="mono" style="font-size:13px;color:var(--text-1);">${hrs.toFixed(1)}h</div>
+      </div>
+    `;
+  }).join('');
+  const certsPassed = state.certs.filter(c => c.status === 'passed').length;
+  const appsShipped = state.apps.filter(a => a.status === 'passed').length;
+  return `
+    <div class="hero" style="text-align:center;">
+      <div class="hero-eyebrow">Lifetime hours</div>
+      <div class="hero-number mono" style="margin-top:8px;">${total.toFixed(1)}</div>
+      <div class="hero-label">across ${sessions} sessions</div>
+      <div class="hero-divider"></div>
+      <div class="hero-data">
+        <div class="data-cell"><div class="data-label">Certs</div><div class="data-value mono">${certsPassed}<span style="font-size:11px;color:var(--text-3);">/${state.certs.length}</span></div></div>
+        <div class="data-cell"><div class="data-label">Apps</div><div class="data-value mono">${appsShipped}<span style="font-size:11px;color:var(--text-3);">/${state.apps.length}</span></div></div>
+        <div class="data-cell"><div class="data-label">Streak</div><div class="data-value mono">${streak}<span style="font-size:11px;color:var(--text-3);">d</span></div></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">30-Day Hours</div>
+        <div class="section-meta mono">stacked by track</div>
+      </div>
+      ${render30DayGraph()}
+    </div>
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Last 7 Days</div>
+        <div class="section-meta mono">${week.toFixed(1)}h · ${month.toFixed(1)}h month</div>
+      </div>
+      <div class="card">
+        <div class="week-strip">
+          ${days.map(d => `<div class="day-cell ${d.hours > 0 ? 'has' : ''} ${d.isToday ? 'today' : ''}"><div class="day-label">${d.label}</div><div class="day-value mono">${d.hours > 0 ? d.hours.toFixed(1) : '—'}</div></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Hours by Track</div>
+        <div class="section-meta">top 10</div>
+      </div>
+      <div class="card">${trackRows || '<div class="empty">No sessions yet.</div>'}</div>
+    </div>
+    <div class="danger-zone">
+      <button class="btn btn-danger" id="reset-btn">Reset all progress</button>
+    </div>
+  `;
+}
+function render() {
+  const content = document.getElementById('content');
+  let html = '';
+  if (activeTab === 'now') html = renderNow();
+  else if (activeTab === 'certs') html = renderCerts();
+  else if (activeTab === 'swiftui') html = renderSwiftUI();
+  else if (activeTab === 'apps') html = renderApps();
+  else if (activeTab === 'design') html = renderDesign();
+  else if (activeTab === 'cram') html = renderCram();
+  else if (activeTab === 'stats') html = renderStats();
+  content.innerHTML = html;
+  attachListeners();
+}
+function attachListeners() {
+  document.querySelectorAll('.tab').forEach(t => {
+    t.onclick = () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      activeTab = t.dataset.tab;
+      expandedItem = null;
+      render();
+    };
+  });
+  document.querySelectorAll('[data-toggle]').forEach(el => {
+    el.onclick = () => {
+      const id = el.dataset.toggle;
+      expandedItem = expandedItem === id ? null : id;
+      render();
+    };
+  });
+  document.querySelectorAll('[data-day-iso]').forEach(el => {
+    el.onclick = () => {
+      const iso = el.dataset.dayIso;
+      const dow = parseInt(el.dataset.dayDow);
+      openDayModal(iso, dow);
+    };
+  });
+  const modalCloseBtn = document.getElementById('day-modal-close-btn');
+  if (modalCloseBtn) modalCloseBtn.onclick = closeDayModal;
+  const modal = document.getElementById('day-modal');
+  if (modal) modal.onclick = (e) => { if (e.target === modal) closeDayModal(); };
+  const coachBtn = document.getElementById('ai-coach-btn');
+  if (coachBtn) coachBtn.onclick = askCoach;
+  let selectedHours = null;
+  document.querySelectorAll('.chip[data-hours]').forEach(c => {
+    c.onclick = () => {
+      document.querySelectorAll('.chip[data-hours]').forEach(x => x.classList.remove('selected'));
+      c.classList.add('selected');
+      selectedHours = parseFloat(c.dataset.hours);
+      const customInput = document.getElementById('ql-custom');
+      if (customInput) customInput.value = '';
+    };
+  });
+  const customInput = document.getElementById('ql-custom');
+  if (customInput) {
+    customInput.oninput = () => {
+      document.querySelectorAll('.chip[data-hours]').forEach(x => x.classList.remove('selected'));
+      selectedHours = null;
+    };
+  }
+  const submitBtn = document.getElementById('ql-submit');
+  if (submitBtn) {
+    submitBtn.onclick = async () => {
+      const target = document.getElementById('ql-target').value;
+      const custom = parseFloat(document.getElementById('ql-custom').value);
+      const hours = !isNaN(custom) && custom > 0 ? custom : selectedHours;
+      if (!hours || hours <= 0) { showToast('Pick a duration', true); return; }
+      await logSession(target, hours);
+    };
+  }
+  document.querySelectorAll('[data-field]').forEach(el => {
+    const field = el.dataset.field;
+    const id = el.dataset.id;
+    const immediate = el.dataset.immediate === '1';
+    if (el.type === 'number') {
+      el.oninput = () => updateField(id, field, parseFloat(el.value) || 0);
+    } else if (el.type === 'date') {
+      el.onchange = () => immediate ? updateFieldImmediate(id, field, el.value) : updateField(id, field, el.value);
+    } else {
+      el.oninput = () => updateField(id, field, el.value);
+    }
+  });
+  document.querySelectorAll('[data-action]').forEach(b => {
+    b.onclick = (e) => {
+      e.stopPropagation();
+      const action = b.dataset.action;
+      const id = b.dataset.id;
+      if (action === 'pass') setPassed(id, true);
+      if (action === 'unpass') setPassed(id, false);
+      if (action === 'delete') deleteItem(id);
+    };
+  });
+  document.querySelectorAll('[data-add]').forEach(b => {
+    b.onclick = () => addCustomItem(b.dataset.add);
+  });
+  const cramSelect = document.getElementById('cram-cert');
+  if (cramSelect) cramSelect.onchange = () => { cramState.certId = cramSelect.value; render(); };
+  const hpd = document.getElementById('cram-hpd');
+  const dpw = document.getElementById('cram-dpw');
+  if (hpd && dpw) {
+    hpd.oninput = () => {
+      cramState.hoursPerDay = parseFloat(hpd.value);
+      const v = document.getElementById('cram-hpd-val');
+      if (v) v.textContent = `${cramState.hoursPerDay.toFixed(1)}h`;
+    };
+    hpd.onchange = () => render();
+    dpw.oninput = () => {
+      cramState.daysPerWeek = parseInt(dpw.value);
+      const v = document.getElementById('cram-dpw-val');
+      if (v) v.textContent = cramState.daysPerWeek;
+    };
+    dpw.onchange = () => render();
+  }
+  const resetBtn = document.getElementById('reset-btn');
+  if (resetBtn) resetBtn.onclick = resetState;
+}
+function getStoredTheme() { try { return localStorage.getItem('roadmap_theme'); } catch (e) { return null; } }
+function setStoredTheme(t) { try { localStorage.setItem('roadmap_theme', t); } catch (e) {} }
+function applyTheme(t) {
+  if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  else document.documentElement.removeAttribute('data-theme');
+}
+function getCurrentEffectiveTheme() {
+  const stored = getStoredTheme();
+  if (stored === 'light' || stored === 'dark') return stored;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+document.getElementById('theme-toggle').onclick = () => {
+  const next = getCurrentEffectiveTheme() === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  setStoredTheme(next);
+  render();
+};
+(function initTheme() { const stored = getStoredTheme(); if (stored) applyTheme(stored); })();
+function checkUnlocked() { try { return sessionStorage.getItem('roadmap_unlocked') === '1'; } catch (e) { return false; } }
+function setUnlocked() { try { sessionStorage.setItem('roadmap_unlocked', '1'); } catch (e) {} }
+async function unlock() {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  await loadState();
+  render();
+}
+const gateInput = document.getElementById('gate-input');
+function tryUnlock() {
+  if (gateInput.value === PASSCODE) {
+    setUnlocked();
+    unlock();
+  } else {
+    gateInput.classList.add('shake');
+    setTimeout(() => { gateInput.classList.remove('shake'); gateInput.value = ''; }, 400);
+  }
+}
+gateInput.addEventListener('input', () => {
+  if (gateInput.value.length === PASSCODE.length) tryUnlock();
+});
+// Enter still works as a fallback (e.g. if a passcode ever uses non-fixed length)
+gateInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') tryUnlock();
+});
+(function init() {
+  if (checkUnlocked()) unlock();
+  else setTimeout(() => gateInput.focus(), 100);
+})();
+</script>
+</body>
+</html>
